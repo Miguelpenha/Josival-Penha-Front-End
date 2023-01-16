@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Container, Title } from '../../styles/pages'
+import { Container, Title } from '../../styles/pages/teachers'
 import getServerSidePropsAuth from '../../utils/getServerSidePropsAuth'
 
 function Teachers() {
