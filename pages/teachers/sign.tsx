@@ -5,12 +5,12 @@ import { Container, Title, Button, ButtonLink, IconButton, TextButton } from '..
 import onClick from '../../components/pages/teachers/sign/onClick'
 import nookies from 'nookies'
 
-function sign() {
+function Sign() {
     const { loginGoogle } = useAuth()
 
     return <>
         <Head>
-            <title>sign</title>
+            <title>Sign</title>
         </Head>
         <Script src="https://accounts.google.com/gsi/client" async defer/>
         <Container>
@@ -36,7 +36,7 @@ function sign() {
     </>
 }
 
-export default sign
+export default Sign
 
 export const getServerSideProps = async (ctx: any) => {
     const { [process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_TEACHER]:idTeacher } = nookies.get(ctx)
