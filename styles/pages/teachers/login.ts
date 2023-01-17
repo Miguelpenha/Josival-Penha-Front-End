@@ -49,7 +49,7 @@ export const Label = styled.label`
 
 export const Input = styled.input`
     border: none;
-    padding: 4rem;
+    padding: 0.8rem;
     margin-top: 3%;
     font-size: 1rem;
     border-radius: 15px;
