@@ -17,7 +17,7 @@ export const Title = styled.h1`
     color: ${props => props.theme.primary};
 
     @media screen and (max-width: 900px) {
-        font-size: 7.5vw;
+        font-size: 8vw;
     }
 `
 

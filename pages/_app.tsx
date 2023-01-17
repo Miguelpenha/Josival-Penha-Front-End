@@ -18,7 +18,7 @@ const TemplateRestaurant: FC<AppProps> = ({ Component, pageProps }) => {
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         </Head>
         <Component {...pageProps}/>
-        <ToastContainer theme="light"/>
+        <ToastContainer theme="dark"/>
         <GlobalStyle/>
       </ThemeProvider>
     </AuthProvider>
