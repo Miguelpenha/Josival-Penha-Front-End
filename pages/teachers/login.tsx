@@ -12,7 +12,7 @@ function Login() {
         </Head>
         <Container>
             <Title>Login</Title>
-            <Form id="login" onSubmit={onSubmit}>
+            <Form id="form-login" onSubmit={onSubmit}>
                 <Field>
                     <Label>Login</Label>
                     <Input id="login" name="login" type="email" placeholder="Login" required/>

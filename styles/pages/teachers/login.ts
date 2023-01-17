@@ -21,13 +21,17 @@ export const Title = styled.h1`
 `
 
 export const Form = styled.form`
-    width: 20rem;
+    width: 24rem;
     padding: 2rem;
     display: flex;
     align-self: center;
     border-radius: 10px;
     flex-direction: column;
     background-color: ${props => props.theme.backgroundColorSecondary};
+
+    @media screen and (max-width: 900px) {
+        width: 18rem;
+    }
 `
 
 export const Field = styled.div`
