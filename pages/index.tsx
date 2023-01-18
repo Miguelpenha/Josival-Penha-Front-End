@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { Container, Title } from '../styles/pages'
-import Button from '../components/pages/home/Button'
+import Button from '../components/pages/Home/Button'
 import nookies from 'nookies'
 
 function Home() {
