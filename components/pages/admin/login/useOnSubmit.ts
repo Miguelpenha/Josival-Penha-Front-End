@@ -13,7 +13,7 @@ interface IForm {
 }
 
 function useOnSubmit() {
-    const { teacher: { loginLocal } } = useAuth()
+    const { admin: { loginLocal } } = useAuth()
     const router = useRouter()
 
     async function onSubmit(event: FormEvent<HTMLFormElement>) {
@@ -33,7 +33,7 @@ function useOnSubmit() {
                     type: 'success'
                 })
 
-                router.push('/teachers')
+                router.push('/admin')
             } else {
                 toast('Login ou senha incorretos', {
                     type: 'error'

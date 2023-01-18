@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import { Container, Title } from '../styles/pages'
-import Link from 'next/link'
-import Button from '../components/pages/Home/Button'
+import Button from '../components/pages/home/Button'
 import nookies from 'nookies'
 
 function Home() {
@@ -31,8 +30,7 @@ function Home() {
 export default Home
 
 export const getServerSideProps = async (ctx: any) => {
-    const { [process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_ADMIN]:admin } = nookies.get(ctx)
-    const { [process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_TEACHER]:idTeacher } = nookies.get(ctx)
+    const { [process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_TEACHER]:idTeacher, [process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_ADMIN]:admin } = nookies.get(ctx)
 
     if (admin) {
         return {

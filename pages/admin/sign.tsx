@@ -1,12 +1,12 @@
 import useAuth from '../../contexts/authContext'
 import Head from 'next/head'
 import Script from 'next/script'
-import { Container, Title, Button, ButtonLink, IconButton, TextButton } from '../../styles/pages/teachers/sign'
-import onClick from '../../components/pages/teachers/sign/onClick'
+import { Container, Title, Button, ButtonLink, IconButton, TextButton } from '../../styles/pages/admin/sign'
+import onClick from '../../components/pages/admin/sign/onClick'
 import nookies from 'nookies'
 
 function Sign() {
-    const { teacher: { loginGoogle } } = useAuth()
+    const { admin: { loginGoogle } } = useAuth()
 
     return <>
         <Head>
@@ -39,13 +39,13 @@ function Sign() {
 export default Sign
 
 export const getServerSideProps = async (ctx: any) => {
-    const { [process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_TEACHER]:idTeacher } = nookies.get(ctx)
+    const { [process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_ADMIN]:isAdmin } = nookies.get(ctx)
 
-    if (idTeacher) {
+    if (isAdmin) {
         return {
             redirect: {
                 permanent: false,
-                destination: '/teachers'
+                destination: '/admin'
             }
         }
     } else {

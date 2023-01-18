@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { Container, Title } from '../../styles/pages/teachers'
-import getServerSidePropsAuth from '../../utils/getServerSidePropsAuth'
+import getServerSidePropsAuthTeacher from '../../utils/getServerSidePropsAuthTeacher'
 
 function Teachers() {
     return <>
@@ -15,4 +15,4 @@ function Teachers() {
 
 export default Teachers
 
-export const getServerSideProps = getServerSidePropsAuth
+export const getServerSideProps = getServerSidePropsAuthTeacher
