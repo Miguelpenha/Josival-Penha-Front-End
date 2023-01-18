@@ -1,13 +1,15 @@
-import { ButtonHTMLAttributes, FC } from 'react'
+import { ReactElement, FC } from 'react'
 import { Container, Text } from './style'
 
-interface Iprops extends ButtonHTMLAttributes<HTMLButtonElement> {
-    children: any
+interface Iprops {
+    href: string
+    title: string
+    children: ReactElement
 }
 
-const Button: FC<Iprops> = ({ title, children, ...props }) => {
+const Button: FC<Iprops> = ({ href, title, children, ...props }) => {
     return (
-        <Container {...props}>
+        <Container href={href} {...props}>
             {children}
             <Text>{title}</Text>
         </Container>

@@ -1,7 +1,7 @@
-import base from '../../../api/base'
+import base from '../../../../api/base'
 
-async function generateSpreadsheet() {
-    const { data } = await base.get('/students/export', {
+async function generateSpreadsheet(url: string, name: string) {
+    const { data } = await base.get(url, {
         responseType: 'blob'
     })
 
@@ -11,7 +11,7 @@ async function generateSpreadsheet() {
 
     link.href = href
     
-    link.setAttribute('download', 'Planilha de alunos.xlsx')
+    link.setAttribute('download', name)
 
     document.body.appendChild(link)
 

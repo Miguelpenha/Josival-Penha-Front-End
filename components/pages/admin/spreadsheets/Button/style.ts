@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import Link from 'next/link'
 
-export const Container = styled(Link)`
+export const Container = styled.button`
     width: 18rem;
     display: flex;
     padding: 1.2rem;
+    cursor: pointer;
     margin-top: 2rem;
     align-self: center;
     border-radius: 10px;
@@ -24,7 +24,7 @@ export const Container = styled(Link)`
     }
 
     svg {
-        margin-left: 5%;
+        margin-left: 1%;
         fill: ${props => props.theme.primary};
     }
 `
