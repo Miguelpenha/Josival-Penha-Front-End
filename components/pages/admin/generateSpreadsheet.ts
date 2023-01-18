@@ -1,7 +1,7 @@
 import base from '../../../api/base'
 
 async function generateSpreadsheet() {
-    const { data } = await base.post('/students/export', {}, {
+    const { data } = await base.get('/students/export', {
         responseType: 'blob'
     })
 
