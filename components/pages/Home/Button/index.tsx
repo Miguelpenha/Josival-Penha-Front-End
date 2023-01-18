@@ -1,10 +1,10 @@
-import { FC } from 'react'
+import { ReactElement, FC } from 'react'
 import { Container, Text } from './style'
 
 interface Iprops {
     href: string
     title: string
-    children: any
+    children: ReactElement
 }
 
 const Button: FC<Iprops> = ({ href, title, children, ...props }) => {
