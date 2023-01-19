@@ -3,6 +3,10 @@ import { useRouter } from 'next/router'
 import { FormEvent } from 'react'
 import { toast } from 'react-toastify'
 
+interface IQuery {
+    type: 'admin' | 'teacher'
+}
+
 interface IForm {
     login: {
         value: string
@@ -13,8 +17,9 @@ interface IForm {
 }
 
 function useOnSubmit() {
-    const { admin: { loginLocal } } = useAuth()
+    const { admin: { loginLocal: loginLocalAdmin }, teacher: { loginLocal: loginLocalTeacher } } = useAuth()
     const router = useRouter()
+    const { type } = router.query as unknown as IQuery
 
     async function onSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
@@ -26,14 +31,14 @@ function useOnSubmit() {
                 type: 'error'
             })
         } else {
-            const { authenticated } = await loginLocal(login.value, password.value)
+            const { authenticated } = type === 'admin' ? await loginLocalAdmin(login.value, password.value) : await loginLocalTeacher(login.value, password.value)
 
             if (authenticated) {
                 toast('Login feito com sucesso', {
                     type: 'success'
                 })
 
-                router.push('/admin')
+                router.push(type === 'admin' ? '/admin' : '/teachers')
             } else {
                 toast('Login ou senha incorretos', {
                     type: 'error'

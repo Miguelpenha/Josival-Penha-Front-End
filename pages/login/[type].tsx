@@ -1,9 +1,9 @@
-import useOnSubmit from '../../components/pages/admin/login/useOnSubmit'
+import useOnSubmit from '../../components/pages/login/type/useOnSubmit'
 import Head from 'next/head'
-import { Container, Title, Form, Field, Label, Input, ButtonSubmit, TextButtonSubmit } from '../../styles/pages/admin/login'
+import { Container, Title, Form, Field, Label, Input, ButtonSubmit, TextButtonSubmit } from '../../styles/pages/login/type'
 import nookies from 'nookies'
 
-function Login() {
+function LoginType() {
     const onSubmit = useOnSubmit()
 
     return <>
@@ -29,16 +29,23 @@ function Login() {
     </>
 }
 
-export default Login
+export default LoginType
 
 export const getServerSideProps = async (ctx: any) => {
-    const { [process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_ADMIN]:isAdmin } = nookies.get(ctx)
+    const { [process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_TEACHER]:idTeacher, [process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_ADMIN]:admin } = nookies.get(ctx)
 
-    if (isAdmin) {
+    if (admin) {
         return {
             redirect: {
                 permanent: false,
                 destination: '/admin'
+            }
+        }
+    } else if (idTeacher) {
+        return {
+            redirect: {
+                permanent: false,
+                destination: '/teachers'
             }
         }
     } else {

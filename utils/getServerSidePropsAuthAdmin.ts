@@ -11,7 +11,7 @@ async function getServerSidePropsAuthAdmin(ctx: any) {
         return {
             redirect: {
                 permanent: false,
-                destination: '/admin/sign'
+                destination: '/sign/admin'
             }
         }
     }

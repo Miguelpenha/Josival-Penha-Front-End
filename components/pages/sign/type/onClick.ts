@@ -1,6 +1,6 @@
 import { IAuthContext } from '../../../../contexts/authContext/type'
 
-function onClick(login: IAuthContext['admin']['loginGoogle']) {
+function onClick(login: IAuthContext['admin']['loginGoogle'] | IAuthContext['teacher']['loginGoogle']) {
     google.accounts.id.initialize({
         auto_select: true,
         ux_mode: 'redirect',

@@ -11,7 +11,7 @@ async function getServerSidePropsAuthTeacher(ctx: any) {
         return {
             redirect: {
                 permanent: false,
-                destination: '/teachers/sign'
+                destination: '/sign/teachers'
             }
         }
     }
