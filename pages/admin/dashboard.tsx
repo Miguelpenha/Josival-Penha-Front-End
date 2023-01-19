@@ -29,7 +29,7 @@ function Dashboard() {
                     </Icon>
                 </Link>
             )}
-            <ContainerDashboard ref={dashboardRef} id="dashboard" src="https://datastudio.google.com/embed/reporting/84d5bd14-366e-4c11-8e47-8d2cfded12d0/page/h74CD" allowFullScreen/>
+            <ContainerDashboard ref={dashboardRef} id="dashboard" src={process.env.NEXT_PUBLIC_URL_DASHBOARD} allowFullScreen/>
         </Container>
     </>
 }
