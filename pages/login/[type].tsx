@@ -1,7 +1,8 @@
 import useOnSubmit from '../../components/pages/login/type/useOnSubmit'
 import Head from 'next/head'
-import { Container, Title, Form, Field, Label, Input, ButtonSubmit, TextButtonSubmit } from '../../styles/pages/login/type'
+import { Container, Title, Form, Field, Label, ButtonSubmit, TextButtonSubmit } from '../../styles/pages/login/type'
 import nookies from 'nookies'
+import InputContainer from '../../components/pages/login/type/InputContainer'
 
 function LoginType() {
     const onSubmit = useOnSubmit()
@@ -15,11 +16,11 @@ function LoginType() {
             <Form id="form-login" onSubmit={onSubmit}>
                 <Field>
                     <Label>Login</Label>
-                    <Input id="login" name="login" type="email" placeholder="Login" required/>
+                    <InputContainer id="login" name="login" type="email" placeholder="Login" required/>
                 </Field>
                 <Field>
                     <Label>Senha</Label>
-                    <Input id="password" name="password" type="password" placeholder="Senha" required/>
+                    <InputContainer icon id="password" name="password" placeholder="Senha" required/>
                 </Field>
                 <ButtonSubmit type="submit">
                     <TextButtonSubmit>Confirmar</TextButtonSubmit>

@@ -47,27 +47,6 @@ export const Label = styled.label`
     font-weight: bold;
 `
 
-export const Input = styled.input`
-    border: none;
-    padding: 0.8rem;
-    margin-top: 3%;
-    font-size: 1rem;
-    border-radius: 15px;
-    transition-duration: 0.2s;
-    transition-timing-function: linear;
-    color: ${props => props.theme.primary};
-    background-color: ${props => props.theme.backgroundColor};
-
-    :focus {
-        outline: none;
-        border-radius: 5px;
-    }
-
-    ::placeholder {
-        color: ${props => props.theme.secondary};
-    }
-`
-
 export const ButtonSubmit = styled.button`
     width: 14rem;
     display: flex;
