@@ -5,6 +5,8 @@ import generateSpreadsheet from '../../components/pages/admin/spreadsheets/gener
 import getServerSidePropsAuthAdmin from '../../utils/getServerSidePropsAuthAdmin'
 
 function Spreadsheets() {
+    const filtersGeneralSpreadsheet = ['Alunos', 'Turmas', 'Professoras']
+
     return <>
         <Head>
             <title>Planilhas</title>
@@ -26,6 +28,12 @@ function Spreadsheets() {
                 <svg width="2.8em" height="2.8em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M0 0h24v24H0z" fill="none"/>
                     <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3 1 9l11 6 9-4.91V17h2V9L12 3z"/>
+                </svg>
+            </Button>
+            <Button onClick={() => generateSpreadsheet(`/export?filters=${filtersGeneralSpreadsheet.toString()}`, 'Planilha geral.xlsx')} title="Planilha geral">
+                <svg width="2.8em" height="2.8em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0z" fill="none"/><path d="M0 0h24v24H0V0z" fill="none"/>
+                    <path d="M17 16l-4-4V8.82C14.16 8.4 15 7.3 15 6c0-1.66-1.34-3-3-3S9 4.34 9 6c0 1.3.84 2.4 2 2.82V12l-4 4H3v5h5v-3.05l4-4.2 4 4.2V21h5v-5h-4z"/>
                 </svg>
             </Button>
         </Container>
