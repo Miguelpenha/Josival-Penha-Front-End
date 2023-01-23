@@ -5,7 +5,7 @@ import generateSpreadsheet from '../../components/pages/admin/spreadsheets/gener
 import getServerSidePropsAuthAdmin from '../../utils/getServerSidePropsAuthAdmin'
 
 function Spreadsheets() {
-    const filtersGeneralSpreadsheet = ['Alunos', 'Turmas', 'Professoras']
+    const filtersGeneralSpreadsheet = ['Alunos', 'Turmas', 'Professoras', 'Financeiro']
 
     return <>
         <Head>
@@ -28,6 +28,22 @@ function Spreadsheets() {
                 <svg width="2.8em" height="2.8em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M0 0h24v24H0z" fill="none"/>
                     <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3 1 9l11 6 9-4.91V17h2V9L12 3z"/>
+                </svg>
+            </Button>
+            <Button onClick={() => generateSpreadsheet('/export/Financeiro', 'Planilha de financeiro.xlsx')} title="Financeiro">
+                <svg width="2.8em" height="2.8em" xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" viewBox="0 0 24 24">
+                    <g>
+                        <rect fill="none" height="24" width="24"/>
+                    </g>
+                    <g>
+                        <g>
+                            <rect height="7" width="3" x="4" y="10"/>
+                            <rect height="7" width="3" x="10.5" y="10"/>
+                            <rect height="3" width="20" x="2" y="19"/>
+                            <rect height="7" width="3" x="17" y="10"/>
+                            <polygon points="12,1 2,6 2,8 22,8 22,6"/>
+                        </g>
+                    </g>
                 </svg>
             </Button>
             <Button onClick={() => generateSpreadsheet(`/export/${filtersGeneralSpreadsheet.toString()}`, 'Planilha geral.xlsx')} title="Geral">
