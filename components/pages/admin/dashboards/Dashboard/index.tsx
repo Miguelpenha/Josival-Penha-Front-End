@@ -1,10 +1,12 @@
-import Head from 'next/head'
-import { Container, Icon, ContainerDashboard } from '../../styles/pages/admin/dashboard'
+import { FC, useRef, useState, useEffect } from 'react'
+import { Container, Icon, ContainerDashboard } from './style'
 import Link from 'next/link'
-import getServerSidePropsAuthAdmin from '../../utils/getServerSidePropsAuthAdmin'
-import { useEffect, useRef, useState } from 'react'
 
-function Dashboard() {
+interface Iprops {
+    url: string
+}
+
+const Dashboard: FC<Iprops> = ({ url }) => {
     const dashboardRef = useRef<HTMLIFrameElement>(null)
     const [show, setShow] = useState(false)
 
@@ -15,12 +17,9 @@ function Dashboard() {
     }, [])
     
     return <>
-        <Head>
-            <title>Dashboard</title>
-        </Head>
         <Container>
             {show && (
-                <Link title="Voltar" href="/admin">
+                <Link title="Voltar" href="/admin/dashboards">
                     <Icon width="3vw" height="3vw" xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" viewBox="0 0 24 24">
                         <rect fill="none" height="24" width="24"/>
                         <g>
@@ -29,11 +28,9 @@ function Dashboard() {
                     </Icon>
                 </Link>
             )}
-            <ContainerDashboard ref={dashboardRef} id="dashboard" src={process.env.NEXT_PUBLIC_URL_DASHBOARD} allowFullScreen/>
+            <ContainerDashboard ref={dashboardRef} id="dashboard" src={url} allowFullScreen/>
         </Container>
     </>
 }
 
 export default Dashboard
-
-export const getServerSideProps = getServerSidePropsAuthAdmin
