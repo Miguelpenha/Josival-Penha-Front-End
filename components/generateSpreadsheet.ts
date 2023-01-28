@@ -5,7 +5,9 @@ async function generateSpreadsheet(url: string, name: string) {
         responseType: 'blob'
     })
 
-    const href = URL.createObjectURL(data)
+    const file = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' })
+
+    const href = URL.createObjectURL(file)
     
     const link = document.createElement('a')
 
