@@ -20,7 +20,7 @@ export const Title = styled.h1`
 `
 
 export const ContainerButtons = styled.div`
-    gap: 3.5vw;
+    gap: 2.2vw;
     display: flex;
     flex-wrap: wrap;
     max-width: 900px;

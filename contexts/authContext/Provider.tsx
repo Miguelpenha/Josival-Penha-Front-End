@@ -1,5 +1,5 @@
 import { FC, useState, useEffect } from 'react'
-import base from '../../api/base'
+import base from '../../services/api/base'
 import { setCookie, destroyCookie, parseCookies } from 'nookies'
 import TypesContext from './Context'
 

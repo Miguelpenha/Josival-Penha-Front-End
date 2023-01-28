@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import useOnSubmit from './useOnSubmit'
-import { Container, Title, ButtonSubmit, TextButtonSubmit } from './style'
-import Input from './Input'
+import { Container, Title, ButtonSubmit } from './style'
+import Input from '../Input'
 
 interface Iprops {
     onCorrect: () => void
@@ -14,9 +14,7 @@ const Form: FC<Iprops> = ({ onCorrect }) => {
         <Container onSubmit={onSubmit}>
             <Title>Financeiro</Title>
             <Input icon id="password" name="password" placeholder="Senha" required/>
-            <ButtonSubmit type="submit">
-                <TextButtonSubmit>Confirmar</TextButtonSubmit>
-            </ButtonSubmit>
+            <ButtonSubmit title="Confirmar" type="submit"/>
         </Container>
     )
 }

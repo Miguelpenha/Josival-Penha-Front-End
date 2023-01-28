@@ -1,4 +1,4 @@
-import useAuth from '../../../../contexts/authContext'
+import useAuth from '../contexts/authContext'
 import { useRouter } from 'next/router'
 import { FormEvent } from 'react'
 import { toast } from 'react-toastify'
@@ -16,12 +16,12 @@ interface IForm {
     }
 }
 
-function useOnSubmit() {
+function useLocalLogin() {
     const { admin: { loginLocal: loginLocalAdmin }, teacher: { loginLocal: loginLocalTeacher } } = useAuth()
     const router = useRouter()
     const { type } = router.query as unknown as IQuery
 
-    async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    async function localLogin(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
 
         const { login, password } = event.currentTarget as unknown as IForm
@@ -47,7 +47,7 @@ function useOnSubmit() {
         }
     }
 
-    return onSubmit
+    return localLogin
 }
 
-export default useOnSubmit
+export default useLocalLogin

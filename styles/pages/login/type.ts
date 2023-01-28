@@ -46,33 +46,3 @@ export const Label = styled.label`
     font-size: 1rem;
     font-weight: bold;
 `
-
-export const ButtonSubmit = styled.button`
-    width: 14rem;
-    display: flex;
-    padding: 1.2rem;
-    cursor: pointer;
-    align-self: center;
-    border-radius: 10px;
-    align-items: center;
-    text-decoration: none;
-    transform: scale(0.95);
-    transition-duration: 0.2s;
-    transition-timing-function: linear;
-    background-color: ${props => props.theme.backgroundColor};
-    border: 1px solid ${props => props.theme.backgroundColorSecondary};
-
-    :hover {
-        transform: scale(1);
-        border: 1px solid ${props => props.theme.primary};
-        box-shadow: ${props => props.theme.primary} 0px 3px 7px 0px;
-        background-color: ${props => props.theme.backgroundColorSecondary};
-    }
-`
-
-export const TextButtonSubmit = styled.span`
-    margin: auto;
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: ${props => props.theme.primary};
-`

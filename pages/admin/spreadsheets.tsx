@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { Container, Title, ContainerButtons } from '../../styles/pages/admin/spreadsheets'
-import Button from '../../components/pages/admin/spreadsheets/Button'
-import generateSpreadsheet from '../../components/pages/admin/spreadsheets/generateSpreadsheet'
+import Button from '../../components/Button'
+import generateSpreadsheet from '../../components/generateSpreadsheet'
 import getServerSidePropsAuthAdmin from '../../utils/getServerSidePropsAuthAdmin'
 
 function Spreadsheets() {

@@ -1,11 +1,12 @@
-import useOnSubmit from '../../components/pages/login/type/useOnSubmit'
+import useLocalLogin from '../../components/useLocalLogin'
 import Head from 'next/head'
-import { Container, Title, Form, Field, Label, ButtonSubmit, TextButtonSubmit } from '../../styles/pages/login/type'
+import { Container, Title, Form, Field, Label } from '../../styles/pages/login/type'
+import Input from '../../components/Input'
+import ButtonSubmit from '../../components/ButtonSubmit'
 import nookies from 'nookies'
-import InputContainer from '../../components/pages/login/type/InputContainer'
 
 function LoginType() {
-    const onSubmit = useOnSubmit()
+    const localLogin = useLocalLogin()
 
     return <>
         <Head>
@@ -13,18 +14,16 @@ function LoginType() {
         </Head>
         <Container>
             <Title>Login</Title>
-            <Form id="form-login" onSubmit={onSubmit}>
+            <Form id="form-login" onSubmit={localLogin}>
                 <Field>
                     <Label>Login</Label>
-                    <InputContainer id="login" name="login" type="email" placeholder="Login" required/>
+                    <Input id="login" name="login" type="email" placeholder="Login" required/>
                 </Field>
                 <Field>
                     <Label>Senha</Label>
-                    <InputContainer icon id="password" name="password" placeholder="Senha" required/>
+                    <Input icon id="password" name="password" placeholder="Senha" required/>
                 </Field>
-                <ButtonSubmit type="submit">
-                    <TextButtonSubmit>Confirmar</TextButtonSubmit>
-                </ButtonSubmit>
+                <ButtonSubmit title="Confirmar" type="submit"/>
             </Form>
         </Container>
     </>

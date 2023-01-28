@@ -1,6 +1,7 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const Container = styled.button`
+export const styleContainer = css`
+    margin: 1.5%;
     width: 18rem;
     display: flex;
     padding: 1.2rem;
@@ -28,9 +29,17 @@ export const Container = styled.button`
     }
 `
 
-export const Text = styled.span`
+export const Container = styled.button`
+    ${styleContainer}
+`
+
+export const styleText = css`
     margin: auto;
     font-size: 1.4rem;
     font-weight: bold;
     color: ${props => props.theme.primary};
+`
+
+export const Text = styled.span`
+    ${styleText}
 `

@@ -1,4 +1,4 @@
-import base from '../../../../api/base'
+import base from '../services/api/base'
 
 async function generateSpreadsheet(url: string, name: string) {
     const { data } = await base.get(url, {
