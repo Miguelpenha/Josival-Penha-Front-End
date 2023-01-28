@@ -2,7 +2,8 @@ import { useRouter } from 'next/router'
 import useGoogleLogin from '../../components/useGoogleLogin'
 import Head from 'next/head'
 import Script from 'next/script'
-import { Container, Title } from '../../styles/pages/sign/type'
+import ContainerPD from '../../components/ContainerPD'
+import { Title } from '../../styles/pages/sign/type'
 import Button from '../../components/Button'
 import ButtonLink from '../../components/ButtonLink'
 import nookies from 'nookies'
@@ -20,7 +21,7 @@ function SignType() {
             <title>Sign</title>
         </Head>
         <Script src="https://accounts.google.com/gsi/client" async defer/>
-        <Container>
+        <ContainerPD>
             <Title>Escolha a forma de login</Title>
             <Button title="Login com Google" onClick={googleLogin}>
                 <svg viewBox="64 64 896 896" width="2.1em" height="2.1em">
@@ -37,7 +38,7 @@ function SignType() {
                     </g>
                 </svg>
             </ButtonLink>
-        </Container>
+        </ContainerPD>
     </>
 }
 

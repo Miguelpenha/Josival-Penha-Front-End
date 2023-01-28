@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import Head from 'next/head'
-import { Container } from '../../../styles/pages/admin/dashboards/type'
+import ContainerPD from '../../../components/ContainerPD'
 import FormFinance from '../../../components/FormFinance'
 import Dashboard from '../../../components/Dashboard'
 import getServerSidePropsAuthAdmin from '../../../utils/getServerSidePropsAuthAdmin'
@@ -19,10 +19,10 @@ function TypeDashboard() {
         <Head>
             <title>Dashboard financeiro</title>
         </Head>
-        <Container>
+        <ContainerPD>
             {type === 'finance' && !show && <FormFinance onCorrect={() => setShow(true)}/>}
-            {(show || type === 'general') && <Dashboard url={process.env.NEXT_PUBLIC_URL_DASHBOARD_FINANCE}/>}
-        </Container>
+            {(show || type === 'general') && <Dashboard url={type === 'finance' ? process.env.NEXT_PUBLIC_URL_DASHBOARD_FINANCE : process.env.NEXT_PUBLIC_URL_DASHBOARD_GENERAL}/>}
+        </ContainerPD>
     </>
 }
 

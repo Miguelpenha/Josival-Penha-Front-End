@@ -1,5 +1,6 @@
 import Head from 'next/head'
-import { Container, Title } from '../styles/pages'
+import ContainerPD from '../components/ContainerPD'
+import { Title } from '../styles/pages'
 import ButtonLink from '../components/ButtonLink'
 import nookies from 'nookies'
 
@@ -8,7 +9,7 @@ function Home() {
         <Head>
             <title>Faça login</title>
         </Head>
-        <Container>
+        <ContainerPD>
             <Title>Faça login</Title>
             <ButtonLink href="sign/teachers" title="Professoras">
                 <svg width="2.3em" height="2.3em" viewBox="0 -64 640 640" xmlns="http://www.w3.org/2000/svg">
@@ -23,7 +24,7 @@ function Home() {
                     </g>
                 </svg>
             </ButtonLink>
-        </Container>
+        </ContainerPD>
     </>
 }
 

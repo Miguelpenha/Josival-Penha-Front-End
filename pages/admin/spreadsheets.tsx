@@ -1,5 +1,6 @@
 import Head from 'next/head'
-import { Container, Title, ContainerButtons } from '../../styles/pages/admin/spreadsheets'
+import ContainerPD from '../../components/ContainerPD'
+import { Title, ContainerButtons } from '../../styles/pages/admin/spreadsheets'
 import Button from '../../components/Button'
 import generateSpreadsheet from '../../components/generateSpreadsheet'
 import getServerSidePropsAuthAdmin from '../../utils/getServerSidePropsAuthAdmin'
@@ -11,7 +12,7 @@ function Spreadsheets() {
         <Head>
             <title>Planilhas</title>
         </Head>
-        <Container>
+        <ContainerPD>
             <Title>Planilhas</Title>
             <ContainerButtons>
                 <Button onClick={() => generateSpreadsheet('/export/Professoras', 'Planilha de professoras.xlsx')} title="Professoras">
@@ -54,7 +55,7 @@ function Spreadsheets() {
                     </svg>
                 </Button>
             </ContainerButtons>
-        </Container>
+        </ContainerPD>
     </>
 }
 

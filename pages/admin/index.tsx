@@ -1,5 +1,6 @@
 import Head from 'next/head'
-import { Container, Title } from '../../styles/pages/admin/dashboards'
+import ContainerPD from '../../components/ContainerPD'
+import { Title } from '../../styles/pages/admin'
 import ButtonLink from '../../components/ButtonLink'
 import getServerSidePropsAuthAdmin from '../../utils/getServerSidePropsAuthAdmin'
 
@@ -8,7 +9,7 @@ function Admin() {
         <Head>
             <title>Sistema Josival Penha</title>
         </Head>
-        <Container>
+        <ContainerPD>
             <Title>Sistema Josival Penha</Title>
             <ButtonLink href="admin/spreadsheets" title="Planilhas">
                 <svg width="2.8em" height="2.8em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -21,7 +22,7 @@ function Admin() {
                     <path d="M11,21H5c-1.1,0-2-0.9-2-2V5c0-1.1,0.9-2,2-2h6V21z M13,21h6c1.1,0,2-0.9,2-2v-7h-8V21z M21,10V5c0-1.1-0.9-2-2-2h-6v7H21z"/>
                 </svg>
             </ButtonLink>
-        </Container>
+        </ContainerPD>
     </>
 }
 

@@ -1,6 +1,7 @@
 import useLocalLogin from '../../components/useLocalLogin'
 import Head from 'next/head'
-import { Container, Title, Form, Field, Label } from '../../styles/pages/login/type'
+import ContainerPD from '../../components/ContainerPD'
+import { Title, Form, Field, Label } from '../../styles/pages/login/type'
 import Input from '../../components/Input'
 import ButtonSubmit from '../../components/ButtonSubmit'
 import nookies from 'nookies'
@@ -12,7 +13,7 @@ function LoginType() {
         <Head>
             <title>Login</title>
         </Head>
-        <Container>
+        <ContainerPD>
             <Title>Login</Title>
             <Form id="form-login" onSubmit={localLogin}>
                 <Field>
@@ -25,7 +26,7 @@ function LoginType() {
                 </Field>
                 <ButtonSubmit title="Confirmar" type="submit"/>
             </Form>
-        </Container>
+        </ContainerPD>
     </>
 }
 
