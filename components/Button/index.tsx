@@ -1,9 +1,9 @@
 import { FC, ButtonHTMLAttributes } from 'react'
 import { Container, Text } from './style'
 
-const Button: FC<ButtonHTMLAttributes<HTMLButtonElement>> = ({ title, children, ...props }) => {
+const Button: FC<ButtonHTMLAttributes<HTMLButtonElement>> = ({ disabled, title, children, ...props }) => {
     return (
-        <Container {...props}>
+        <Container disabled={Boolean(disabled)} {...props}>
             {children}
             <Text>{title}</Text>
         </Container>
