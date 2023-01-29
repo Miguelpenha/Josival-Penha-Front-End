@@ -1,6 +1,10 @@
 import styled, { css } from 'styled-components'
 
-export const styleContainer = css`
+interface IStyleContainer {
+    disabled: boolean
+}
+
+export const styleContainer = css<IStyleContainer>`
     margin: 1.5%;
     width: 18rem;
     display: flex;
@@ -16,12 +20,14 @@ export const styleContainer = css`
     border: 1px solid ${props => props.theme.backgroundColor};
     background-color: ${props => props.theme.backgroundColorSecondary};
 
-    :hover {
-        transform: scale(1);
-        border: 1px solid ${props => props.theme.primary};
-        background-color: ${props => props.theme.backgroundColor};
-        box-shadow: ${props => props.theme.primary} 0px 3px 7px 0px;
-    }
+    ${props => !props.disabled && css`
+        :hover {
+            transform: scale(1);
+            border: 1px solid ${props => props.theme.primary};
+            background-color: ${props => props.theme.backgroundColor};
+            box-shadow: ${props => props.theme.primary} 0px 3px 7px 0px;
+        }
+    `}
 
     svg {
         margin-left: 1%;

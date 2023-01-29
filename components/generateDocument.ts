@@ -1,13 +1,11 @@
 import base from '../services/api/base'
 
-async function generateSpreadsheet(type: string, name: string) {
-    const url = `/export/${type}`
-
+async function generateDocument(url: string, name: string) {
     const { data } = await base.get(url, {
         responseType: 'blob'
     })
 
-    const file = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' })
+    const file = new Blob([data], { type: 'application/pdf' })
 
     const href = URL.createObjectURL(file)
     
@@ -26,4 +24,4 @@ async function generateSpreadsheet(type: string, name: string) {
     URL.revokeObjectURL(href)
 }
 
-export default generateSpreadsheet
+export default generateDocument
