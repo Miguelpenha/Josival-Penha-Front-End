@@ -39,8 +39,9 @@ function useStyles(): StylesConfig<object, false, GroupBase<object>> {
         container: base => ({
             ...base,
             width: '100%',
-            padding: '0 0.8rem',
+            marginTop: '3%',
             marginBottom: '4%',
+            padding: '0 0.8rem',
             alignSelf: 'center',
             borderColor: theme.backgroundColor
         }),

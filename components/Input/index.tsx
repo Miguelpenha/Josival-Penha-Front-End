@@ -1,13 +1,13 @@
-import { FC, InputHTMLAttributes, useState } from 'react'
+import { InputHTMLAttributes, forwardRef, useState } from 'react'
 import { Container, ContainerIcon, Icon, InputStyled } from './style'
 
 interface Iprops extends InputHTMLAttributes<HTMLInputElement> {
     icon?: boolean
 }
 
-const Input: FC<Iprops> = ({ icon, ...props }) => {
+const Input = forwardRef<null, Iprops>(({ icon, ...props }, ref) => {
     const [hidden, setHidden] = useState(false)
-
+    
     return (
         <Container>
             {icon && (
@@ -24,12 +24,12 @@ const Input: FC<Iprops> = ({ icon, ...props }) => {
                 </ContainerIcon>
             )}
             {icon ?
-                <InputStyled {...props} type={!hidden ? 'password' : 'text'}/>
+                <InputStyled ref={ref} {...props} type={!hidden ? 'password' : 'text'}/>
             :
-                <InputStyled {...props}/>
+                <InputStyled ref={ref} {...props}/>
             }
         </Container>
     )
-}
+})
 
 export default Input
