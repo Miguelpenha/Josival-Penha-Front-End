@@ -1,12 +1,12 @@
 import { Itheme } from '../types'
 
 const theme: Itheme = {
-    color: '#fa6565',
-    primary: '#FF0022',
-    secondary: '#8C030E',
-    secondaryColor: '#BF0413',
-    backgroundColor: '#200004',
-    backgroundColorSecondary: '#590212'
+    color: '#71cdef',
+    primary: '#00afef',
+    secondary: '#007daa',
+    secondaryColor: '#0093c9',
+    backgroundColor: '#00131a',
+    backgroundColorSecondary: '#003346'
 }
 
 export default theme

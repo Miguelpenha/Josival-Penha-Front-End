@@ -97,10 +97,10 @@ function CreateStudent() {
     
     return <>
         <Head>
-            <title>Gerar declaração</title>
+            <title>Cadastrar aluno</title>
         </Head>
         <ContainerPD>
-            <Title>Gerar declaração</Title>
+            <Title>Cadastrar aluno</Title>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Field>
                     <Label>Nome do aluno</Label>
@@ -262,7 +262,7 @@ function CreateStudent() {
                         placeholder="Complemento da casa do aluno..."
                     />
                 </Field>
-                <ButtonSubmit title="Gerar"/>
+                <ButtonSubmit title="Cadastrar"/>
             </Form>
         </ContainerPD>
     </>
