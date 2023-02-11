@@ -178,7 +178,7 @@ function EditStudent() {
                         <Select
                             name="situation"
                             placeholder="Situação do aluno..."
-                            defaultValue={student && student.email}
+                            defaultValue={student && student.situation}
                             onChange={situation => setValue('situation', situation.value)}
                             options={[
                                 {
