@@ -100,7 +100,7 @@ function EditStudent() {
     
     return <>
         <Head>
-            <title>Edit aluno</title>
+            <title>Editar aluno</title>
         </Head>
         <ContainerPD>
             <Title>Editar aluno</Title>
