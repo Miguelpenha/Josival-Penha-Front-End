@@ -14,6 +14,7 @@ import InputMask from 'react-input-mask'
 import IClass from '../../../../types/class'
 import base from '../../../../services/api/base'
 import { useRouter } from 'next/router'
+import { Loading } from '../../../../components/ContainerPD/style'
 
 interface IForm {
     cpf: string
@@ -97,190 +98,194 @@ function EditStudent() {
             }
         }
     }
-    
-    return <>
-        <Head>
-            <title>Editar aluno</title>
-        </Head>
-        <ContainerPD>
-            <Title>Editar aluno</Title>
-            <Form onSubmit={handleSubmit(onSubmit)}>
-                <Field>
-                    <Label>Nome do aluno</Label>
-                    <Input
-                        required
-                        type="text"
-                        {...register('name')}
-                        placeholder="Nome do aluno..."
-                        defaultValue={student && student.name}
-                    />
-                </Field>
-                <Field>
-                    <Label>CPF do responsável</Label>
-                    <InputMask mask="999.999.999-99" onChange={event => setValue('cpf', event.target.value)}>
+
+    if (student && students && classes) {
+        return <>
+            <Head>
+                <title>Editar aluno</title>
+            </Head>
+            <ContainerPD>
+                <Title>Editar aluno</Title>
+                <Form onSubmit={handleSubmit(onSubmit)}>
+                    <Field>
+                        <Label>Nome do aluno</Label>
+                        <Input
+                            required
+                            type="text"
+                            {...register('name')}
+                            placeholder="Nome do aluno..."
+                            defaultValue={student && student.name}
+                        />
+                    </Field>
+                    <Field>
+                        <Label>CPF do responsável</Label>
+                        <InputMask mask="999.999.999-99" onChange={event => setValue('cpf', event.target.value)}>
+                            <Input
+                                type="text"
+                                placeholder="CPF do aluno..."
+                                defaultValue={student && student.cpf}
+                            />
+                        </InputMask>
+                    </Field>
+                    <Field>
+                        <Label>Data de nascimento do aluno</Label>
+                        <Input
+                            required
+                            type="date"
+                            {...register('birth')}
+                            defaultValue={student && `${student.birth.split('/')[2]}-${student.birth.split('/')[1]}-${student.birth.split('/')[0]}`}
+                        />
+                    </Field>
+                    <Field>
+                        <Label>E-mail do responsável</Label>
                         <Input
                             type="text"
-                            placeholder="CPF do aluno..."
-                            defaultValue={student && student.cpf}
+                            {...register('email')}
+                            placeholder="E-mail do responsável..."
+                            defaultValue={student && student.email}
                         />
-                    </InputMask>
-                </Field>
-                <Field>
-                    <Label>Data de nascimento do aluno</Label>
-                    <Input
-                        required
-                        type="date"
-                        {...register('birth')}
-                        defaultValue={student && `${student.birth.split('/')[2]}-${student.birth.split('/')[1]}-${student.birth.split('/')[0]}`}
-                    />
-                </Field>
-                <Field>
-                    <Label>E-mail do responsável</Label>
-                    <Input
-                        type="text"
-                        {...register('email')}
-                        placeholder="E-mail do responsável..."
-                        defaultValue={student && student.email}
-                    />
-                </Field>
-                <Field>
-                    <Label>Gênero do aluno</Label>
-                    <Select
-                        name="gender"
-                        placeholder="Gênero do aluno..."
-                        defaultValue={student && student.gender}
-                        onChange={gender => setValue('gender', gender.value)}
-                        options={[
-                            {
-                                label: 'Masculino',
-                                value: 'Masculino'
-                            },
-                            {
-                                label: 'Feminino',
-                                value: 'Feminino'
-                            }
-                        ]}
-                    />
-                </Field>
-                <Field>
-                    <Label>Telefone do responsável</Label>
-                    <Input
-                        type="tel"
-                        {...register('telephone')}
-                        placeholder="Telefone do responsável..."
-                        defaultValue={student && student.telephone}
-                    />
-                </Field>
-                <Field>
-                    <Label>Situação do aluno</Label>
-                    <Select
-                        name="situation"
-                        placeholder="Situação do aluno..."
-                        defaultValue={student && student.email}
-                        onChange={situation => setValue('situation', situation.value)}
-                        options={[
-                            {
-                                label: 'Ativo',
-                                value: 'Ativo'
-                            },
-                            {
-                                label: 'Desativo',
-                                value: 'Desativo'
-                            }
-                        ]}
-                    />
-                </Field>
-                <Field>
-                    <Label>Primeiro responsável</Label>
-                    <Input
-                        required
-                        type="text"
-                        {...register('responsible1')}
-                        placeholder="Primeiro responsável..."
-                        defaultValue={student && student.responsible1}
-                    />
-                </Field>
-                <Field>
-                    <Label>Segundo responsável</Label>
-                    <Input
-                        type="text"
-                        {...register('responsible2')}
-                        placeholder="Segundo responsável..."
-                        defaultValue={student && student.responsible2}
-                    />
-                </Field>
-                <Field>
-                    <Label>Turma do aluno</Label>
-                    <Select
-                        name="class"
-                        placeholder="Turma do aluno..."
-                        defaultValue={student && student.class.name}
-                        onChange={situation => setValue('class', situation.value)}
-                        options={classes?.map(classMap => ({
-                            value: classMap._id,
-                            label: classMap.name
-                        }))}
-                    />
-                </Field>
-                <Field>
-                    <Label>CEP do aluno</Label>
-                    <InputMask mask="99999-999" onChange={event => setValue('cep', event.target.value)}>
+                    </Field>
+                    <Field>
+                        <Label>Gênero do aluno</Label>
+                        <Select
+                            name="gender"
+                            placeholder="Gênero do aluno..."
+                            defaultValue={student && student.gender}
+                            onChange={gender => setValue('gender', gender.value)}
+                            options={[
+                                {
+                                    label: 'Masculino',
+                                    value: 'Masculino'
+                                },
+                                {
+                                    label: 'Feminino',
+                                    value: 'Feminino'
+                                }
+                            ]}
+                        />
+                    </Field>
+                    <Field>
+                        <Label>Telefone do responsável</Label>
+                        <Input
+                            type="tel"
+                            {...register('telephone')}
+                            placeholder="Telefone do responsável..."
+                            defaultValue={student && student.telephone}
+                        />
+                    </Field>
+                    <Field>
+                        <Label>Situação do aluno</Label>
+                        <Select
+                            name="situation"
+                            placeholder="Situação do aluno..."
+                            defaultValue={student && student.email}
+                            onChange={situation => setValue('situation', situation.value)}
+                            options={[
+                                {
+                                    label: 'Ativo',
+                                    value: 'Ativo'
+                                },
+                                {
+                                    label: 'Desativo',
+                                    value: 'Desativo'
+                                }
+                            ]}
+                        />
+                    </Field>
+                    <Field>
+                        <Label>Primeiro responsável</Label>
+                        <Input
+                            required
+                            type="text"
+                            {...register('responsible1')}
+                            placeholder="Primeiro responsável..."
+                            defaultValue={student && student.responsible1}
+                        />
+                    </Field>
+                    <Field>
+                        <Label>Segundo responsável</Label>
                         <Input
                             type="text"
-                            placeholder="CEP do aluno..."
-                            defaultValue={student && student.address && student.address.cep}
+                            {...register('responsible2')}
+                            placeholder="Segundo responsável..."
+                            defaultValue={student && student.responsible2}
                         />
-                    </InputMask>
-                </Field>
-                <Field>
-                    <Label>Cidade do aluno</Label>
-                    <Input
-                        type="text"
-                        {...register('city')}
-                        placeholder="Cidade do aluno..."
-                        defaultValue={student && student.address && student.address.city}
-                    />
-                </Field>
-                <Field>
-                    <Label>Bairro do aluno</Label>
-                    <Input
-                        type="text"
-                        {...register('neighborhood')}
-                        placeholder="Bairro do aluno..."
-                        defaultValue={student && student.address && student.address.neighborhood}
-                    />
-                </Field>
-                <Field>
-                    <Label>Rua do aluno</Label>
-                    <Input
-                        type="text"
-                        {...register('street')}
-                        placeholder="Rua do aluno..."
-                        defaultValue={student && student.address && student.address.street}
-                    />
-                </Field>
-                <Field>
-                    <Label>Número da casa do aluno</Label>
-                    <Input
-                        type="number"
-                        {...register('number')}
-                        placeholder="Número da casa do aluno..."
-                        defaultValue={student && student.address && student.address.number}
-                    />
-                </Field>
-                <Field>
-                    <Label>Complemento da casa do aluno</Label>
-                    <Input
-                        type="text"
-                        {...register('complement')}
-                        placeholder="Complemento da casa do aluno..."
-                        defaultValue={student && student.address && student.address.complement}
-                    />
-                </Field>
-                <ButtonSubmit title="Editar"/>
-            </Form>
-        </ContainerPD>
-    </>
+                    </Field>
+                    <Field>
+                        <Label>Turma do aluno</Label>
+                        <Select
+                            name="class"
+                            placeholder="Turma do aluno..."
+                            defaultValue={student && student.class.name}
+                            onChange={situation => setValue('class', situation.value)}
+                            options={classes?.map(classMap => ({
+                                value: classMap._id,
+                                label: classMap.name
+                            }))}
+                        />
+                    </Field>
+                    <Field>
+                        <Label>CEP do aluno</Label>
+                        <InputMask mask="99999-999" onChange={event => setValue('cep', event.target.value)}>
+                            <Input
+                                type="text"
+                                placeholder="CEP do aluno..."
+                                defaultValue={student && student.address && student.address.cep}
+                            />
+                        </InputMask>
+                    </Field>
+                    <Field>
+                        <Label>Cidade do aluno</Label>
+                        <Input
+                            type="text"
+                            {...register('city')}
+                            placeholder="Cidade do aluno..."
+                            defaultValue={student && student.address && student.address.city}
+                        />
+                    </Field>
+                    <Field>
+                        <Label>Bairro do aluno</Label>
+                        <Input
+                            type="text"
+                            {...register('neighborhood')}
+                            placeholder="Bairro do aluno..."
+                            defaultValue={student && student.address && student.address.neighborhood}
+                        />
+                    </Field>
+                    <Field>
+                        <Label>Rua do aluno</Label>
+                        <Input
+                            type="text"
+                            {...register('street')}
+                            placeholder="Rua do aluno..."
+                            defaultValue={student && student.address && student.address.street}
+                        />
+                    </Field>
+                    <Field>
+                        <Label>Número da casa do aluno</Label>
+                        <Input
+                            type="number"
+                            {...register('number')}
+                            placeholder="Número da casa do aluno..."
+                            defaultValue={student && student.address && student.address.number}
+                        />
+                    </Field>
+                    <Field>
+                        <Label>Complemento da casa do aluno</Label>
+                        <Input
+                            type="text"
+                            {...register('complement')}
+                            placeholder="Complemento da casa do aluno..."
+                            defaultValue={student && student.address && student.address.complement}
+                        />
+                    </Field>
+                    <ButtonSubmit title="Editar"/>
+                </Form>
+            </ContainerPD>
+        </>
+    } else {
+        <Loading/>
+    }
 }
 
 export default EditStudent
