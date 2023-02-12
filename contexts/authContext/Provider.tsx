@@ -12,7 +12,7 @@ const AuthProvider: FC<Iprops> = ({ children }) => {
     const [isAdmin, setIsAdmin] = useState(false)
 
     async function loginLocalAdmin(login: string, password: string) {
-        const { authenticated }: { authenticated: boolean } = (await base.post('/admin/login/local', {
+        const { authenticated }: { authenticated: boolean } = (await base.post('/admin/auth/login/local', {
             login,
             password
         })).data
@@ -34,7 +34,7 @@ const AuthProvider: FC<Iprops> = ({ children }) => {
     }
 
     async function loginGoogleAdmin(jwt: string) {
-        const { authenticated }: { authenticated: boolean } = (await base.post('/admin/login/google', {
+        const { authenticated }: { authenticated: boolean } = (await base.post('/admin/auth/login/google', {
             jwt
         })).data
 
@@ -61,7 +61,7 @@ const AuthProvider: FC<Iprops> = ({ children }) => {
     }
     
     async function loginLocalTeacher(login: string, password: string) {
-        const { authenticated, teacherID }: { authenticated: boolean, teacherID: string } = (await base.post('/teachers/login/local', {
+        const { authenticated, teacherID }: { authenticated: boolean, teacherID: string } = (await base.post('/teachers/auth/login/local', {
             login,
             password
         })).data
@@ -83,7 +83,7 @@ const AuthProvider: FC<Iprops> = ({ children }) => {
     }
 
     async function loginGoogleTeacher(jwt: string) {
-        const { authenticated, teacherID }: { authenticated: boolean, teacherID: string } = (await base.post('/teachers/login/google', {
+        const { authenticated, teacherID }: { authenticated: boolean, teacherID: string } = (await base.post('/teachers/auth/login/google', {
             jwt
         })).data
 
@@ -108,7 +108,6 @@ const AuthProvider: FC<Iprops> = ({ children }) => {
 
         destroyCookie(undefined, process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_TEACHER)
     }
-
 
     useEffect(() => {
         async function load() {
