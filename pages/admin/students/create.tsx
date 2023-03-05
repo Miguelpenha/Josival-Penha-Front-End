@@ -63,7 +63,6 @@ function CreateStudent() {
             const { created }: { created: boolean } = (await base.post('/students', {
                 cpf,
                 name,
-                birth,
                 email,
                 gender,
                 telephone,
@@ -71,6 +70,7 @@ function CreateStudent() {
                 responsible1,
                 responsible2,
                 class: classSelect,
+                birth: new Date(birth).toLocaleDateString('pt-br', { timeZone: 'UTC' }),
                 address: {
                     cep,
                     city,
