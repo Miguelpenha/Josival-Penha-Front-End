@@ -6,7 +6,7 @@ const InputSearch = styled(Input).attrs({
 })`
     margin: auto;
     font-size: 1.2rem;
-    width: calc(20rem + 10vw);
+    width: calc(15rem + 15vw);
     background-color: ${props => props.theme.backgroundColorSecondary};
 
     ::-webkit-search-cancel-button {
