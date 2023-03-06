@@ -3,12 +3,12 @@ import IStudent from '../../../types/student'
 import { useForm } from 'react-hook-form'
 import Head from 'next/head'
 import ContainerPD from '../../../components/ContainerPD'
-import { Title, Form, Field, Label } from '../../../styles/pages/admin/students/create'
+import { Title, Form, Field, Label, MessageError } from '../../../styles/pages/admin/students/create'
 import Select from '../../../components/Select'
 import Input from '../../../components/Input'
 import ButtonSubmit from '../../../components/ButtonSubmit'
 import getServerSidePropsAuthAdmin from '../../../utils/getServerSidePropsAuthAdmin'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import InputMask from 'react-input-mask'
 import IClass from '../../../types/class'
@@ -38,7 +38,8 @@ function CreateStudent() {
     const router = useRouter()
     const { data: students } = api.get<IStudent[]>('/students')
     const { data: classes } = api.get<IClass[]>('/classes')
-    const { register, handleSubmit, setValue } = useForm<IForm>()
+    const { register, handleSubmit, setValue, watch } = useForm<IForm>()
+    const [isExists, setIsExists] = useState(false)
 
     useEffect(() => {
         register('gender')
@@ -48,12 +49,28 @@ function CreateStudent() {
         register('cep')
     }, [])
 
+    const nameStudent = watch('name') || ''
+
+    useEffect(() => {
+        if (students) {
+            let isExistsName = false
+
+            students.map(student => {
+                if (student.name.toUpperCase() === nameStudent.toUpperCase()) {
+                    isExistsName = true
+                }
+            })
+
+            if (isExistsName) {
+                setIsExists(true)
+            } else {
+                setIsExists(false)
+            }
+        }
+    }, [nameStudent])
+
     async function onSubmit(data: IForm) {
-        const names: string[] = []
-
-        students?.map(student => names.push(student.name.toUpperCase()))
-
-        if (names.includes(data.name.toUpperCase())) {
+        if (isExists) {
             toast('Já existe um aluno com esse nome', {
                 type: 'error'
             })
@@ -104,6 +121,7 @@ function CreateStudent() {
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Field>
                     <Label>Nome do aluno</Label>
+                    {isExists && <MessageError>Esse aluno já existe</MessageError>}
                     <Input
                         required
                         type="text"

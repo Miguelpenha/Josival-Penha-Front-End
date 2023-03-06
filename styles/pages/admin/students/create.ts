@@ -41,3 +41,22 @@ export const Label = styled.label`
     font-size: 1rem;
     font-weight: bold;
 `
+
+export const MessageError = styled.span`
+    color: red;
+    font-size: 1rem;
+    margin-top: 0.5em;
+    padding-left: 0.4em;
+    animation: show 0.4s;
+    border-left: 2px solid red;
+
+    @keyframes show {
+        0% {
+            opacity: 0.5;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+`
