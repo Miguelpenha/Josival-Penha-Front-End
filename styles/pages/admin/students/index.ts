@@ -45,6 +45,10 @@ export const Student = styled(Link)`
         background-color: ${props => props.theme.backgroundColor};
         box-shadow: ${props => props.theme.primary} 0px 3px 7px 0px;
     }
+
+    @media screen and (max-width: 900px) {
+        width: 18em;
+    }
 `
 
 export const NameStudent = styled.span`
