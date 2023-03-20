@@ -1,7 +1,9 @@
+import { useRouter } from 'next/router'
 import api from '../../../services/api'
 import IStudent from '../../../types/student'
 import { FormEvent } from 'react'
 import base from '../../../services/api/base'
+import { toast } from 'react-toastify'
 import Head from 'next/head'
 import ContainerPD from '../../../components/ContainerPD'
 import { Title, Form, ButtonSubmit } from '../../../styles/pages/admin/notify/report-card'
@@ -9,6 +11,7 @@ import Select from '../../../components/Select'
 import getServerSidePropsAuthAdmin from '../../../utils/getServerSidePropsAuthAdmin'
 
 function Notify() {
+    const router = useRouter()
     const { data: students } = api.get<IStudent[]>('/students')
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -17,6 +20,12 @@ function Notify() {
         const to = event.currentTarget.student.value
 
         await base.get(`/notify/report-card/${to}`)
+
+        router.push('/admin/notify')
+
+        toast('Notificação enviada com sucesso!', {
+           type: 'success' 
+        })
     }
 
     return <>
