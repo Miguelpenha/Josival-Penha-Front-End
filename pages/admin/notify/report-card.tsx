@@ -42,33 +42,35 @@ function Notify() {
         <Head>
             <title>Notificar boletins</title>
         </Head>
-        <ContainerPD>
-            <Title>Notificar boletins</Title>
-            <Form onSubmit={handleSubmit}>
-                <Select
-                    required
-                    name="student"
-                    placeholder="Nome do aluno..."
-                    options={students && [...students.map(student => ({
-                        value: student._id,
-                        label: student.name
-                    })), {
-                        value: 'all',
-                        label: 'Todos'
-                    }]}
-                />
-                <Select
-                    required
-                    name="unit"
-                    placeholder="Unidade do boletim..."
-                    options={units.map((unit, index) => ({
-                        label: unit,
-                        value: index+1
-                    }))}
-                />
-                <ButtonSubmit type="submit" title="Notificar"/>
-            </Form>
-        </ContainerPD>
+        {students && (
+            <ContainerPD>
+                <Title>Notificar boletins</Title>
+                <Form onSubmit={handleSubmit}>
+                    <Select
+                        required
+                        name="student"
+                        placeholder="Nome do aluno..."
+                        options={[...students.map(student => ({
+                            value: student._id,
+                            label: student.name
+                        })), {
+                            value: 'all',
+                            label: 'Todos'
+                        }]}
+                    />
+                    <Select
+                        required
+                        name="unit"
+                        placeholder="Unidade do boletim..."
+                        options={units.map((unit, index) => ({
+                            label: unit,
+                            value: index+1
+                        }))}
+                    />
+                    <ButtonSubmit type="submit" title="Notificar"/>
+                </Form>
+            </ContainerPD>
+        )}
     </>
 }
 
