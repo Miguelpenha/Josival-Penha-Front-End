@@ -48,6 +48,7 @@ function Notify() {
                 <Select
                     required
                     name="student"
+                    placeholder="Nome do aluno..."
                     options={students && [...students.map(student => ({
                         value: student._id,
                         label: student.name
@@ -59,6 +60,7 @@ function Notify() {
                 <Select
                     required
                     name="unit"
+                    placeholder="Unidade do boletim..."
                     options={units.map((unit, index) => ({
                         label: unit,
                         value: index+1
