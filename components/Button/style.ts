@@ -10,6 +10,7 @@ export const styleContainer = css<IStyleContainer>`
     display: flex;
     padding: 1.2rem;
     cursor: pointer;
+    text-align: center;
     align-self: center;
     border-radius: 10px;
     align-items: center;
