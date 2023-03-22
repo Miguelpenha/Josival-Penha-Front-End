@@ -10,6 +10,13 @@ import { Title, Form, ButtonSubmit } from '../../../styles/pages/admin/notify/re
 import Select from '../../../components/Select'
 import getServerSidePropsAuthAdmin from '../../../utils/getServerSidePropsAuthAdmin'
 
+const units = [
+    '1° unidade',
+    '2° unidade',
+    '3° unidade',
+    '4° unidade'
+]
+
 function Notify() {
     const router = useRouter()
     const { data: students } = api.get<IStudent[]>('/students')
@@ -17,9 +24,12 @@ function Notify() {
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
 
-        const to = event.currentTarget.student.value
+        const { student, unit: unitRaw } = event.currentTarget
 
-        await base.get(`/notify/report-card/${to}`)
+        const to = student.value
+        const unit = unitRaw.value
+
+        await base.get(`/notify/report-card/${to}?unit=${unit}`)
 
         router.push('/admin/notify')
 
@@ -36,9 +46,8 @@ function Notify() {
             <Title>Notificar boletins</Title>
             <Form onSubmit={handleSubmit}>
                 <Select
+                    required
                     name="student"
-                    defaultValue="Todos"
-                    // onChange={({ value: student }) => setStudentSelect(student)}
                     options={students && [...students.map(student => ({
                         value: student._id,
                         label: student.name
@@ -46,6 +55,14 @@ function Notify() {
                         value: 'all',
                         label: 'Todos'
                     }]}
+                />
+                <Select
+                    required
+                    name="unit"
+                    options={units.map((unit, index) => ({
+                        label: unit,
+                        value: index+1
+                    }))}
                 />
                 <ButtonSubmit type="submit" title="Notificar"/>
             </Form>
