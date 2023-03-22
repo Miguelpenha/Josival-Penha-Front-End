@@ -1,14 +1,14 @@
 import { useRouter } from 'next/router'
-import api from '../../../services/api'
-import IStudent from '../../../types/student'
+import api from '../../../../services/api'
+import IStudent from '../../../../types/student'
 import { FormEvent } from 'react'
-import base from '../../../services/api/base'
+import base from '../../../../services/api/base'
 import { toast } from 'react-toastify'
 import Head from 'next/head'
-import ContainerPD from '../../../components/ContainerPD'
-import { Title, Form, ButtonSubmit } from '../../../styles/pages/admin/notify/report-card'
-import Select from '../../../components/Select'
-import getServerSidePropsAuthAdmin from '../../../utils/getServerSidePropsAuthAdmin'
+import ContainerPD from '../../../../components/ContainerPD'
+import { Title, Form, ButtonSubmit } from '../../../../styles/pages/admin/notify/report-card'
+import Select from '../../../../components/Select'
+import getServerSidePropsAuthAdmin from '../../../../utils/getServerSidePropsAuthAdmin'
 
 const units = [
     '1° unidade',
@@ -17,7 +17,7 @@ const units = [
     '4° unidade'
 ]
 
-function Notify() {
+function ReportCard() {
     const router = useRouter()
     const { data: students } = api.get<IStudent[]>('/students')
 
@@ -40,11 +40,11 @@ function Notify() {
 
     return <>
         <Head>
-            <title>Notificar boletins</title>
+            <title>Notificar boletim</title>
         </Head>
         {students && (
             <ContainerPD>
-                <Title>Notificar boletins</Title>
+                <Title>Notificar boletim</Title>
                 <Form onSubmit={handleSubmit}>
                     <Select
                         required
@@ -74,6 +74,6 @@ function Notify() {
     </>
 }
 
-export default Notify
+export default ReportCard
 
 export const getServerSideProps = getServerSidePropsAuthAdmin
