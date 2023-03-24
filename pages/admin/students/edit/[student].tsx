@@ -14,7 +14,7 @@ import InputMask from 'react-input-mask'
 import IClass from '../../../../types/class'
 import base from '../../../../services/api/base'
 import { useRouter } from 'next/router'
-import { Loading } from '../../../../components/ContainerDefault/style'
+import Loading from '../../../../components/Loading'
 
 interface IForm {
     cpf: string

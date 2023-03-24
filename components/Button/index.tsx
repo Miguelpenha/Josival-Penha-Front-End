@@ -1,6 +1,6 @@
 import { FC, ButtonHTMLAttributes } from 'react'
 import { Container, Text } from './style'
-import { Loading } from '../Loading'
+import Loading from '../Loading'
 
 interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     loading?: boolean

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Loading = styled.span`
+const Loading = styled.span`
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -18,3 +18,5 @@ export const Loading = styled.span`
         }
     }
 `
+
+export default Loading
