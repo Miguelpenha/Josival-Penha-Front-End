@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 
 interface IStyleContainer {
+    loading: boolean
     disabled: boolean
 }
 
@@ -20,6 +21,10 @@ export const styleContainer = css<IStyleContainer>`
     transition-timing-function: linear;
     border: 1px solid ${props => props.theme.backgroundColor};
     background-color: ${props => props.theme.backgroundColorSecondary};
+
+    ${props => props.loading && css`
+        cursor: default;
+    `}
 
     ${props => !props.disabled && css`
         :hover {

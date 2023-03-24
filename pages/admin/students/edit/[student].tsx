@@ -2,7 +2,7 @@ import api from '../../../../services/api'
 import IStudent from '../../../../types/student'
 import { useForm } from 'react-hook-form'
 import Head from 'next/head'
-import ContainerPD from '../../../../components/ContainerPD'
+import ContainerPD from '../../../../components/ContainerDefault'
 import { Title, Form, Field, Label } from '../../../../styles/pages/admin/students/create'
 import Select from '../../../../components/Select'
 import Input from '../../../../components/Input'
@@ -14,7 +14,7 @@ import InputMask from 'react-input-mask'
 import IClass from '../../../../types/class'
 import base from '../../../../services/api/base'
 import { useRouter } from 'next/router'
-import { Loading } from '../../../../components/ContainerPD/style'
+import { Loading } from '../../../../components/ContainerDefault/style'
 
 interface IForm {
     cpf: string

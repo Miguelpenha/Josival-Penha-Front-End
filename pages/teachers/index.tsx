@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import ContainerPD from '../../components/ContainerPD'
+import ContainerPD from '../../components/ContainerDefault'
 import { Title } from '../../styles/pages/teachers'
 import getServerSidePropsAuthTeacher from '../../utils/getServerSidePropsAuthTeacher'
 

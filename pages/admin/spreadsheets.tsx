@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import ContainerPD from '../../components/ContainerPD'
+import ContainerPD from '../../components/ContainerDefault'
 import { Title, ContainerButtons } from '../../styles/pages/admin/spreadsheets'
 import Button from '../../components/Button'
 import generateSpreadsheet from '../../components/generateSpreadsheet'

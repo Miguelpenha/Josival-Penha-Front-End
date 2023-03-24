@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import ContainerPD from '../../../components/ContainerPD'
+import ContainerPD from '../../../components/ContainerDefault'
 import { Title, ContainerButtons } from '../../../styles/pages/admin/documents'
 import ButtonLink from '../../../components/ButtonLink'
 import getServerSidePropsAuthAdmin from '../../../utils/getServerSidePropsAuthAdmin'

@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import Head from 'next/head'
-import ContainerPD from '../../../components/ContainerPD'
+import ContainerPD from '../../../components/ContainerDefault'
 import FormFinance from '../../../components/FormFinance'
 import Dashboard from '../../../components/Dashboard'
 import getServerSidePropsAuthAdmin from '../../../utils/getServerSidePropsAuthAdmin'
