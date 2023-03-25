@@ -4,7 +4,7 @@ import Loading from '../Loading'
 
 interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     loading?: boolean
-    onClick?: () => Promise<void>
+    onClick?: () => Promise<void> | void
 }
 
 const Button: FC<IProps> = ({ disabled, onClick, loading=false, title, children, ...props }) => {
