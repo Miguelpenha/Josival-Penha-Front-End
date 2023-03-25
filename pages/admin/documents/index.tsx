@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import ContainerPD from '../../../components/ContainerDefault'
+import ContainerDefault from '../../../components/ContainerDefault'
 import { Title, ContainerButtons } from '../../../styles/pages/admin/documents'
 import ButtonLink from '../../../components/ButtonLink'
 import getServerSidePropsAuthAdmin from '../../../utils/getServerSidePropsAuthAdmin'
@@ -9,7 +9,7 @@ function Documents() {
         <Head>
             <title>Documentos</title>
         </Head>
-        <ContainerPD>
+        <ContainerDefault back="/admin">
             <Title>Documentos</Title>
             <ContainerButtons>
                 <ButtonLink href="documents/declaration" title="Declaração">
@@ -19,7 +19,7 @@ function Documents() {
                     </svg>
                 </ButtonLink>
             </ContainerButtons>
-        </ContainerPD>
+        </ContainerDefault>
     </>
 }
 

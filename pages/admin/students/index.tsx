@@ -2,7 +2,7 @@ import api from '../../../services/api'
 import IStudent from '../../../types/student'
 import { useState } from 'react'
 import Head from 'next/head'
-import ContainerPD from '../../../components/ContainerDefault'
+import ContainerDefault from '../../../components/ContainerDefault'
 import { Title, ContainerStudents, Student, NameStudent } from '../../../styles/pages/admin/students'
 import InputSearch from '../../../components/InputSearch'
 import ButtonLink from '../../../components/ButtonLink'
@@ -16,7 +16,7 @@ function Students() {
         <Head>
             <title>Alunos</title>
         </Head>
-        <ContainerPD>
+        <ContainerDefault back="/admin">
             <Title>Alunos</Title>
             <ButtonLink href="students/create" title="Cadastrar">
                 <svg width="2.8em" height="2.8em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -36,7 +36,7 @@ function Students() {
                     }
                 })}
             </ContainerStudents>
-        </ContainerPD>
+        </ContainerDefault>
     </>
 }
 

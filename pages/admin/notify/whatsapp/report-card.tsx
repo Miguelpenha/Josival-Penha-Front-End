@@ -5,7 +5,7 @@ import { FormEvent } from 'react'
 import base from '../../../../services/api/base'
 import { toast } from 'react-toastify'
 import Head from 'next/head'
-import ContainerPD from '../../../../components/ContainerDefault'
+import ContainerDefault from '../../../../components/ContainerDefault'
 import { Title, Form, ButtonSubmit } from '../../../../styles/pages/admin/notify/whatsapp/report-card'
 import Select from '../../../../components/Select'
 import Loading from '../../../../components/Loading'
@@ -43,7 +43,7 @@ function ReportCard() {
         <Head>
             <title>Notificar boletim</title>
         </Head>
-        <ContainerPD>
+        <ContainerDefault back="/admin/notify/whatsapp">
             <Title>Notificar boletim</Title>
             <Form onSubmit={handleSubmit}>
                 {students ? <>
@@ -71,7 +71,7 @@ function ReportCard() {
                     <ButtonSubmit type="submit" title="Notificar"/>
                 </> : <Loading size={90} weight={8} speed={0.8}/>}
             </Form>
-        </ContainerPD>
+        </ContainerDefault>
     </>
 }
 

@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import ContainerPD from '../../components/ContainerDefault'
+import ContainerDefault from '../../components/ContainerDefault'
 import { Title, ContainerButtons } from '../../styles/pages/admin/spreadsheets'
 import Button from '../../components/Button'
 import generateSpreadsheet from '../../components/generateSpreadsheet'
@@ -12,7 +12,7 @@ function Spreadsheets() {
         <Head>
             <title>Planilhas</title>
         </Head>
-        <ContainerPD>
+        <ContainerDefault back="/admin">
             <Title>Planilhas</Title>
             <ContainerButtons>
                 <Button loading onClick={() => generateSpreadsheet('Professoras', 'Planilha de professoras.xlsx')} title="Professoras">
@@ -55,7 +55,7 @@ function Spreadsheets() {
                     </svg>
                 </Button>
             </ContainerButtons>
-        </ContainerPD>
+        </ContainerDefault>
     </>
 }
 

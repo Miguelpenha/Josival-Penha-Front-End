@@ -2,7 +2,7 @@ import api from '../../../services/api'
 import IStudent from '../../../types/student'
 import { useState, FormEvent } from 'react'
 import Head from 'next/head'
-import ContainerPD from '../../../components/ContainerDefault'
+import ContainerDefault from '../../../components/ContainerDefault'
 import { Title, Form, Field, Label } from '../../../styles/pages/admin/documents/declaration'
 import Select from '../../../components/Select'
 import Input from '../../../components/Input'
@@ -34,7 +34,7 @@ function Documents() {
         <Head>
             <title>Gerar declaração</title>
         </Head>
-        <ContainerPD>
+        <ContainerDefault back="/admin/documents">
             <Title>Gerar declaração</Title>
             <Form onSubmit={onSubmit}>
                 <Select
@@ -56,7 +56,7 @@ function Documents() {
                 />
                 <ButtonSubmit disabled={!studentSelect} title="Gerar"/>
             </Form>
-        </ContainerPD>
+        </ContainerDefault>
     </>
 }
 

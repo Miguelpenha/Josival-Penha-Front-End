@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import ContainerPD from '../../../../components/ContainerDefault'
+import ContainerDefault from '../../../../components/ContainerDefault'
 import { Title } from '../../../../styles/pages/admin/notify'
 import ButtonLink from '../../../../components/ButtonLink'
 import getServerSidePropsAuthAdmin from '../../../../utils/getServerSidePropsAuthAdmin'
@@ -9,9 +9,9 @@ function Email() {
         <Head>
             <title>Notificações</title>
         </Head>
-        <ContainerPD>
+        <ContainerDefault back="/admin/notify">
             <Title>Notificar</Title>
-        </ContainerPD>
+        </ContainerDefault>
     </>
 }
 

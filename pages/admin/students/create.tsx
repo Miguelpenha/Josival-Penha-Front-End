@@ -2,7 +2,7 @@ import api from '../../../services/api'
 import IStudent from '../../../types/student'
 import { useForm } from 'react-hook-form'
 import Head from 'next/head'
-import ContainerPD from '../../../components/ContainerDefault'
+import ContainerDefault from '../../../components/ContainerDefault'
 import { Title, Form, Field, Label, MessageError } from '../../../styles/pages/admin/students/create'
 import Select from '../../../components/Select'
 import Input from '../../../components/Input'
@@ -116,7 +116,7 @@ function CreateStudent() {
         <Head>
             <title>Cadastrar aluno</title>
         </Head>
-        <ContainerPD>
+        <ContainerDefault back="/admin/students">
             <Title>Cadastrar aluno</Title>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Field>
@@ -282,7 +282,7 @@ function CreateStudent() {
                 </Field>
                 <ButtonSubmit title="Cadastrar"/>
             </Form>
-        </ContainerPD>
+        </ContainerDefault>
     </>
 }
 
