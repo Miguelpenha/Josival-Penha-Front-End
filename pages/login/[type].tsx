@@ -1,19 +1,26 @@
+import { useRouter } from 'next/router'
 import useLocalLogin from '../../components/useLocalLogin'
 import Head from 'next/head'
-import ContainerPD from '../../components/ContainerDefault'
+import ContainerDefault from '../../components/ContainerDefault'
 import { Title, Form, Field, Label } from '../../styles/pages/login/type'
 import Input from '../../components/Input'
 import ButtonSubmit from '../../components/ButtonSubmit'
 import nookies from 'nookies'
 
+interface IQuery {
+    type: 'admin' | 'teacher'
+}
+
 function LoginType() {
+    const router = useRouter()
+    const { type } = router.query as unknown as IQuery
     const localLogin = useLocalLogin()
 
     return <>
         <Head>
             <title>Login</title>
         </Head>
-        <ContainerPD>
+        <ContainerDefault back={`/sign/${type}`}>
             <Title>Login</Title>
             <Form id="form-login" onSubmit={localLogin}>
                 <Field>
@@ -26,7 +33,7 @@ function LoginType() {
                 </Field>
                 <ButtonSubmit title="Confirmar" type="submit"/>
             </Form>
-        </ContainerPD>
+        </ContainerDefault>
     </>
 }
 
