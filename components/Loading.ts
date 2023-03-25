@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 const Loading = styled.span`
-    width: 30px;
-    height: 30px;
+    width: 37.5px;
+    height: 37.5px;
     border-radius: 50%;
     animation: spin 1s linear infinite;
     border: 5px solid ${props => props.theme.backgroundColorSecondary};
