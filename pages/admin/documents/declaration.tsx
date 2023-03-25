@@ -1,6 +1,9 @@
 import api from '../../../services/api'
 import IStudent from '../../../types/student'
-import { useState, FormEvent } from 'react'
+import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/router'
+import generateDocument from '../../../components/generateDocument'
+import { toast } from 'react-toastify'
 import Head from 'next/head'
 import ContainerDefault from '../../../components/ContainerDefault'
 import { Title, Form, Field, Label } from '../../../styles/pages/admin/documents/declaration'
@@ -8,26 +11,29 @@ import Select from '../../../components/Select'
 import Input from '../../../components/Input'
 import Switch from '../../../components/Switch'
 import ButtonSubmit from '../../../components/ButtonSubmit'
-import generateDocument from '../../../components/generateDocument'
+import Loading from '../../../components/Loading'
 import getServerSidePropsAuthAdmin from '../../../utils/getServerSidePropsAuthAdmin'
 
 interface IForm {
-    frequencyPercentage: {
-        value: string
-    }
+    student: IStudent
+    frequency: string
+    isScholarship: boolean
 }
 
 function Documents() {
     const { data: students } = api.get<IStudent[]>('/students')
-    const [isScholarship, setIsScholarship] = useState(false)
-    const [studentSelect, setStudentSelect] = useState<IStudent>()
+    const { watch, setValue, register } = useForm<IForm>()
+    const { student, frequency, isScholarship } = watch()
+    const router = useRouter()
 
-    async function onSubmit(event: FormEvent<HTMLFormElement>) {
-        event.preventDefault()
+    async function handleSubmit() {
+        await generateDocument(`/students/documents/declaration/${student._id}?frequencyPercentage=${frequency}&scholarshipStudent=${isScholarship}`, `Declaração de frequência do aluno(a) ${student.name}.pdf`)
+        
+        await router.push('/admin/documents')
 
-        const { frequencyPercentage } = event.currentTarget as unknown as IForm
-
-        await generateDocument(`/students/documents/declaration/${studentSelect?._id}?frequencyPercentage=${frequencyPercentage.value}&scholarshipStudent=${isScholarship}`, `Declaração de frequência do aluno(a) ${studentSelect?.name}.pdf`)
+        toast('Declaração gerada com sucesso!', {
+            type: 'success'
+        })
     }
     
     return <>
@@ -36,25 +42,35 @@ function Documents() {
         </Head>
         <ContainerDefault back="/admin/documents">
             <Title>Gerar declaração</Title>
-            <Form onSubmit={onSubmit}>
-                <Select
-                    name="student"
-                    onChange={({ value: student }) => setStudentSelect(student)}
-                    options={students && students.map(student => ({
-                        value: student,
-                        label: student.name
-                    }))}
-                />
-                <Field>
-                    <Label>Porcentagem de frequência</Label>
-                    <Input required id="frequencyPercentage" name="frequencyPercentage" type="number" defaultValue="98" placeholder="Frequência..."/>
-                </Field>
-                <Switch
-                    label="Bolsista"
-                    checked={isScholarship}
-                    onChange={checked => setIsScholarship(checked)}
-                />
-                <ButtonSubmit disabled={!studentSelect} title="Gerar"/>
+            <Form onSubmit={ev => ev.preventDefault()}>
+                {students ? <>
+                    <Select
+                        name="student"
+                        onChange={({ value: student }) => setValue('student', student)}
+                        options={students && students.map(student => ({
+                            value: student,
+                            label: student.name
+                        }))}
+                    />
+                    <Field>
+                        <Label>Porcentagem de frequência</Label>
+                        <Input
+                            min="0"
+                            required
+                            max="100"
+                            type="number"
+                            defaultValue="98"
+                            {...register('frequency')}
+                            placeholder="Frequência..."
+                        />
+                    </Field>
+                    <Switch
+                        label="Bolsista"
+                        checked={isScholarship}
+                        onChange={checked => setValue('isScholarship', checked)}
+                    />
+                    <ButtonSubmit loading onClick={handleSubmit} disabled={!student} title="Gerar"/>
+                </> : <Loading size={90} weight={8} speed={0.8}/>}
             </Form>
         </ContainerDefault>
     </>

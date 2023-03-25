@@ -16,6 +16,7 @@ export const Title = styled.h1`
 
 export const Form = styled.form`
     width: 24rem;
+    height: 24em;
     padding: 2rem;
     display: flex;
     align-self: center;
