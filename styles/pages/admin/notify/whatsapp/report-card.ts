@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import ButtonSubmitRaw from '../../../../components/ButtonSubmit'
+import ButtonSubmitRaw from '../../../../../components/ButtonSubmit'
 
 export const Title = styled.h1`
     width: 80%;
@@ -16,18 +16,23 @@ export const Title = styled.h1`
 `
 
 export const Form = styled.form`
-    width: 40em;
+    width: 35em;
+    height: 19em;
     display: flex;
+    padding: 2em 3em;
     align-self: center;
     align-items: center;
     border-radius: 15px;
     flex-direction: column;
-    padding: 3em 5em 3em 5em;
     background-color: ${props => props.theme.backgroundColorSecondary};
 
     @media screen and (max-width: 680px) {
         width: 90vw;
-        padding: 3vh 5vw 3vh 5vw;
+        padding: 3vh 5vw;
+    }
+
+    @media screen and (max-width: 475px) {
+        height: 16em;
     }
 `
 

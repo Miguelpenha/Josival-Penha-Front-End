@@ -6,8 +6,9 @@ import base from '../../../../services/api/base'
 import { toast } from 'react-toastify'
 import Head from 'next/head'
 import ContainerPD from '../../../../components/ContainerDefault'
-import { Title, Form, ButtonSubmit } from '../../../../styles/pages/admin/notify/report-card'
+import { Title, Form, ButtonSubmit } from '../../../../styles/pages/admin/notify/whatsapp/report-card'
 import Select from '../../../../components/Select'
+import Loading from '../../../../components/Loading'
 import getServerSidePropsAuthAdmin from '../../../../utils/getServerSidePropsAuthAdmin'
 
 const units = [
@@ -42,10 +43,10 @@ function ReportCard() {
         <Head>
             <title>Notificar boletim</title>
         </Head>
-        {students && (
-            <ContainerPD>
-                <Title>Notificar boletim</Title>
-                <Form onSubmit={handleSubmit}>
+        <ContainerPD>
+            <Title>Notificar boletim</Title>
+            <Form onSubmit={handleSubmit}>
+                {students ? <>
                     <Select
                         required
                         name="student"
@@ -68,9 +69,9 @@ function ReportCard() {
                         }))}
                     />
                     <ButtonSubmit type="submit" title="Notificar"/>
-                </Form>
-            </ContainerPD>
-        )}
+                </> : <Loading size={90} weight={8} speed={0.8}/>}
+            </Form>
+        </ContainerPD>
     </>
 }
 
