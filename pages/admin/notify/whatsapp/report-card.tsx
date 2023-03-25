@@ -1,7 +1,7 @@
+import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/router'
 import api from '../../../../services/api'
 import IStudent from '../../../../types/student'
-import { FormEvent } from 'react'
 import base from '../../../../services/api/base'
 import { toast } from 'react-toastify'
 import Head from 'next/head'
@@ -11,6 +11,11 @@ import Select from '../../../../components/Select'
 import Loading from '../../../../components/Loading'
 import getServerSidePropsAuthAdmin from '../../../../utils/getServerSidePropsAuthAdmin'
 
+interface IForm {
+    unit: string
+    student: string
+}
+
 const units = [
     '1° unidade',
     '2° unidade',
@@ -19,18 +24,13 @@ const units = [
 ]
 
 function ReportCard() {
+    const { watch, setValue } = useForm<IForm>()
+    const { student, unit } = watch()
     const router = useRouter()
     const { data: students } = api.get<IStudent[]>('/students')
 
-    async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-        event.preventDefault()
-
-        const { student, unit: unitRaw } = event.currentTarget
-
-        const to = student.value
-        const unit = unitRaw.value
-
-        await base.get(`/notify/report-card/${to}?unit=${unit}`)
+    async function handleSubmit() {
+        await base.get(`/notify/report-card/${student}?unit=${unit}`)
 
         router.push('/admin/notify')
 
@@ -45,12 +45,13 @@ function ReportCard() {
         </Head>
         <ContainerDefault back="/admin/notify/whatsapp">
             <Title>Notificar boletim</Title>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={ev => ev.preventDefault()}>
                 {students ? <>
                     <Select
                         required
                         name="student"
                         placeholder="Nome do aluno..."
+                        onChange={({ value: student }) => setValue('student', student)}
                         options={[...students.map(student => ({
                             value: student._id,
                             label: student.name
@@ -63,12 +64,13 @@ function ReportCard() {
                         required
                         name="unit"
                         placeholder="Unidade do boletim..."
+                        onChange={({ value: unit }) => setValue('unit', unit)}
                         options={units.map((unit, index) => ({
                             label: unit,
                             value: index+1
                         }))}
                     />
-                    <ButtonSubmit type="submit" title="Notificar"/>
+                    <ButtonSubmit loading disabled={!student || !unit} onClick={handleSubmit} title="Notificar"/>
                 </> : <Loading size={90} weight={8} speed={0.8}/>}
             </Form>
         </ContainerDefault>
