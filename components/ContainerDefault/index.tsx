@@ -1,4 +1,5 @@
-import { FC, HTMLAttributes } from 'react'
+import { FC, HTMLAttributes, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { Container, ButtonBack, IconButtonBack } from './style'
 
 interface IProps extends HTMLAttributes<HTMLElement> {
@@ -6,6 +7,18 @@ interface IProps extends HTMLAttributes<HTMLElement> {
 }
 
 const ContainerDefault: FC<IProps> = ({ back, children, ...props }) => {
+    const router = useRouter()
+
+    useEffect(() => {
+        if (back) {
+            document.addEventListener('keypress', event => {
+                if (event.key === '\u0002') {
+                    router.replace(back)
+                }
+            })
+        }
+    }, [])
+
     return (
         <Container {...props}>
             {back && (
