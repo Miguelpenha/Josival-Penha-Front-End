@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { KBarAnimator, KBarSearch } from 'kbar'
 
 export const Container = styled(KBarAnimator)`
-    width: 40%;
+    width: 40em;
     border-radius: 10px;
     background-color: ${props => props.theme.backgroundColorSecondary};
     
