@@ -6,6 +6,7 @@ import ContainerDefault from '../../../components/ContainerDefault'
 import { Title, ContainerStudents, Student, NameStudent } from '../../../styles/pages/admin/students'
 import InputSearch from '../../../components/InputSearch'
 import ButtonLink from '../../../components/ButtonLink'
+import Loading from '../../../components/Loading'
 import getServerSidePropsAuthAdmin from '../../../utils/getServerSidePropsAuthAdmin'
 
 function Students() {
@@ -26,7 +27,7 @@ function Students() {
             </ButtonLink>
             <InputSearch value={search} onChange={ev => setSearch(ev.target.value)} placeholder="Pesquisar aluno..."/>
             <ContainerStudents>
-                {students && students.map((student, index) => {
+                {students ? students.map((student, index) => {
                     if (student.name.toUpperCase().includes(search.toUpperCase())) {
                         return (
                             <Student key={index} href={`students/edit/${student._id}`}>
@@ -34,7 +35,7 @@ function Students() {
                             </Student>
                         )
                     }
-                })}
+                }) : <Loading size={90} weight={8} speed={0.8}/>}
             </ContainerStudents>
         </ContainerDefault>
     </>
