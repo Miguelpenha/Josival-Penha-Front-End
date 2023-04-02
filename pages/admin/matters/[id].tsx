@@ -10,21 +10,21 @@ interface IQuery {
     id: string
 }
 
-function Matters() {
+function Matter() {
     const router = useRouter()
     const { id } = router.query as unknown as IQuery
     const { data: student } = api.get<IStudent>(`/students/${id}`)
     
     return <>
         <Head>
-            <title>Ver notas</title>
+            <title>Notas</title>
         </Head>
         <ContainerDefault back="/admin/matters">
-            <Title>Ver notas de {student?.name}</Title>
+            <Title>Notas de {student?.name}</Title>
         </ContainerDefault>
     </>
 }
 
-export default Matters
+export default Matter
 
 export const getServerSideProps = getServerSidePropsAuthAdmin
