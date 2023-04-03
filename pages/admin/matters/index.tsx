@@ -39,7 +39,7 @@ function Matters() {
                             label: student.name
                         }))}
                     />
-                    <ButtonSubmit onClick={handleSubmit} disabled={!student} title="Gerar"/>
+                    <ButtonSubmit onClick={handleSubmit} disabled={!student} title="Ver"/>
                 </> : <Loading size={90} weight={8} speed={0.8}/>}
             </Form>
         </ContainerDefault>
