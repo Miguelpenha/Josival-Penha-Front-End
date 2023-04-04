@@ -1,4 +1,4 @@
-export interface IAuthContext {
+interface IAuthContext {
     teacherID: string | null
     adminIndex: number | null
     admin: {
@@ -12,3 +12,5 @@ export interface IAuthContext {
         loginLocal: (login: string, password: string) => Promise<{ authenticated: boolean }>
     }
 }
+
+export default IAuthContext

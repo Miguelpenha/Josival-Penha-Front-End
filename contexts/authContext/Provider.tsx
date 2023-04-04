@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from 'react'
-import base from '../../services/api/base'
-import { setCookie, destroyCookie, parseCookies } from 'nookies'
+import useService from './services'
+import IAuthContext from './type'
 import TypesContext from './Context'
 
 interface Iprops {
@@ -10,134 +10,29 @@ interface Iprops {
 const AuthProvider: FC<Iprops> = ({ children }) => {
     const [teacherID, setTeacherID] = useState<string | null>(null)
     const [adminIndex, setAdminIndex] = useState<number | null>(null)
-
-    async function loginLocalAdmin(login: string, password: string) {
-        const { authenticated, index }: { authenticated: boolean, index: number } = (await base.post('/admin/auth/login/local', {
-            login,
-            password
-        })).data
-
-        if (authenticated) {
-            setAdminIndex(index)
-
-            setCookie(undefined, process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_ADMIN, String(index), {
-                path: '/',
-                secure: true,
-                domain: process.env.NEXT_PUBLIC_DOMAIN,
-                maxAge: 52560000 * 60 * 1 // 100 year
-            })
-
-            return { authenticated: true }
-        } else {
-            return { authenticated: false }
-        }
-    }
-
-    async function loginGoogleAdmin(jwt: string) {
-        const { authenticated, index }: { authenticated: boolean, index: number } = (await base.post('/admin/auth/login/google', {
-            jwt
-        })).data
-
-        if (authenticated) {
-            setAdminIndex(index)
-
-            setCookie(undefined, process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_ADMIN, String(index), {
-                path: '/',
-                secure: true,
-                domain: process.env.NEXT_PUBLIC_DOMAIN,
-                maxAge: 52560000 * 60 * 1 // 100 year
-            })
-
-            return { authenticated: true }
-        } else {
-            return { authenticated: false }
-        }
-    }
-
-    async function logoutAdmin() {
-        setAdminIndex(null)
-
-        destroyCookie(undefined, process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_ADMIN)
-    }
-    
-    async function loginLocalTeacher(login: string, password: string) {
-        const { authenticated, teacherID }: { authenticated: boolean, teacherID: string } = (await base.post('/teachers/auth/login/local', {
-            login,
-            password
-        })).data
-
-        if (authenticated) {
-            setTeacherID(teacherID)
-
-            setCookie(undefined, process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_TEACHER, teacherID, {
-                path: '/',
-                secure: true,
-                domain: process.env.NEXT_PUBLIC_DOMAIN,
-                maxAge: 52560000 * 60 * 1 // 100 year
-            })
-
-            return { authenticated: true }
-        } else {
-            return { authenticated: false }
-        }
-    }
-
-    async function loginGoogleTeacher(jwt: string) {
-        const { authenticated, teacherID }: { authenticated: boolean, teacherID: string } = (await base.post('/teachers/auth/login/google', {
-            jwt
-        })).data
-
-        if (authenticated) {
-            setTeacherID(teacherID)
-
-            setCookie(undefined, process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_TEACHER, teacherID, {
-                path: '/',
-                secure: true,
-                domain: process.env.NEXT_PUBLIC_DOMAIN,
-                maxAge: 52560000 * 60 * 1 // 100 year
-            })
-
-            return { authenticated: true }
-        } else {
-            return { authenticated: false }
-        }
-    }
-
-    async function logoutTeacher() {
-        setTeacherID(null)
-
-        destroyCookie(undefined, process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_TEACHER)
-    }
+    const { load, authService: { admin, teacher } } = useService(setAdminIndex, setTeacherID)
 
     useEffect(() => {
-        async function load() {
-            const { [process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_TEACHER]:teacherIDRaw, [process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_ADMIN]:adminIndexRaw } = parseCookies()
-
-            if (teacherIDRaw) {
-                setTeacherID(teacherIDRaw)
-            } else if (adminIndex) {
-                setAdminIndex(Number(adminIndexRaw))
-            }
-        }
-
         load().then()
     }, [])
+
+    const value: IAuthContext = {
+        teacherID,
+        adminIndex,
+        admin: {
+            logout: admin.logout,
+            loginLocal: admin.loginLocal,
+            loginGoogle: admin.loginGoogle
+        },
+        teacher: {
+            logout: teacher.logout,
+            loginLocal: teacher.loginLocal,
+            loginGoogle: teacher.loginGoogle
+        }
+    }
     
     return (
-        <TypesContext.Provider value={{
-            teacherID,
-            adminIndex,
-            admin: {
-                logout: logoutAdmin,
-                loginLocal: loginLocalAdmin,
-                loginGoogle: loginGoogleAdmin
-            },
-            teacher: {
-                logout: logoutTeacher,
-                loginLocal: loginLocalTeacher,
-                loginGoogle: loginGoogleTeacher
-            }
-        }}>
+        <TypesContext.Provider value={value}>
            {children}
         </TypesContext.Provider>
     )

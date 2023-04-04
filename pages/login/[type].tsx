@@ -40,9 +40,9 @@ function LoginType() {
 export default LoginType
 
 export const getServerSideProps = async (ctx: any) => {
-    const { [process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_TEACHER]:idTeacher, [process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_ADMIN]:admin } = nookies.get(ctx)
+    const { [process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_TEACHER]:idTeacher, [process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_ADMIN]:indexAdmin } = nookies.get(ctx)
 
-    if (admin) {
+    if (indexAdmin) {
         return {
             redirect: {
                 permanent: false,
