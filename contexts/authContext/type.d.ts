@@ -1,6 +1,6 @@
 export interface IAuthContext {
-    isAdmin: boolean
     teacherID: string | null
+    adminIndex: number | null
     admin: {
         logout: () => Promise<void>
         loginGoogle: (jwt: string) => Promise<{ authenticated: boolean }>

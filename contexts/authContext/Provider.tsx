@@ -9,18 +9,18 @@ interface Iprops {
 
 const AuthProvider: FC<Iprops> = ({ children }) => {
     const [teacherID, setTeacherID] = useState<string | null>(null)
-    const [isAdmin, setIsAdmin] = useState(false)
+    const [adminIndex, setAdminIndex] = useState<number | null>(null)
 
     async function loginLocalAdmin(login: string, password: string) {
-        const { authenticated }: { authenticated: boolean } = (await base.post('/admin/auth/login/local', {
+        const { authenticated, index }: { authenticated: boolean, index: number } = (await base.post('/admin/auth/login/local', {
             login,
             password
         })).data
 
         if (authenticated) {
-            setIsAdmin(authenticated)
+            setAdminIndex(index)
 
-            setCookie(undefined, process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_ADMIN, String(authenticated), {
+            setCookie(undefined, process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_ADMIN, String(index), {
                 path: '/',
                 secure: true,
                 domain: process.env.NEXT_PUBLIC_DOMAIN,
@@ -34,14 +34,14 @@ const AuthProvider: FC<Iprops> = ({ children }) => {
     }
 
     async function loginGoogleAdmin(jwt: string) {
-        const { authenticated }: { authenticated: boolean } = (await base.post('/admin/auth/login/google', {
+        const { authenticated, index }: { authenticated: boolean, index: number } = (await base.post('/admin/auth/login/google', {
             jwt
         })).data
 
         if (authenticated) {
-            setIsAdmin(authenticated)
+            setAdminIndex(index)
 
-            setCookie(undefined, process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_ADMIN, String(authenticated), {
+            setCookie(undefined, process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_ADMIN, String(index), {
                 path: '/',
                 secure: true,
                 domain: process.env.NEXT_PUBLIC_DOMAIN,
@@ -55,7 +55,7 @@ const AuthProvider: FC<Iprops> = ({ children }) => {
     }
 
     async function logoutAdmin() {
-        setIsAdmin(false)
+        setAdminIndex(null)
 
         destroyCookie(undefined, process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_ADMIN)
     }
@@ -111,12 +111,12 @@ const AuthProvider: FC<Iprops> = ({ children }) => {
 
     useEffect(() => {
         async function load() {
-            const { [process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_TEACHER]:teacherIDRaw, [process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_ADMIN]:isAdmin } = parseCookies()
+            const { [process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_TEACHER]:teacherIDRaw, [process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_ADMIN]:adminIndexRaw } = parseCookies()
 
             if (teacherIDRaw) {
                 setTeacherID(teacherIDRaw)
-            } else if (isAdmin) {
-                setIsAdmin(Boolean(isAdmin))
+            } else if (adminIndex) {
+                setAdminIndex(Number(adminIndexRaw))
             }
         }
 
@@ -125,8 +125,8 @@ const AuthProvider: FC<Iprops> = ({ children }) => {
     
     return (
         <TypesContext.Provider value={{
-            isAdmin,
             teacherID,
+            adminIndex,
             admin: {
                 logout: logoutAdmin,
                 loginLocal: loginLocalAdmin,
