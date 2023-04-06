@@ -37,7 +37,10 @@ function Settings() {
                 <ButtonLogout title="Logout" onClick={async () => {
                     await logout()
 
-                    destroyCookie(undefined, process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_ADMIN)
+                    destroyCookie(null, process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_ADMIN, {
+                        path: '/',
+                        domain: process.env.NEXT_PUBLIC_DOMAIN
+                    })
                 }}>
                     <svg width="2.3em" height="2.3em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0z" fill="none"/>
