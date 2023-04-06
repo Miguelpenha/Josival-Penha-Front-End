@@ -1,17 +1,17 @@
 import { Dispatch, SetStateAction } from 'react'
-import nookies from 'nookies'
+import { destroyCookie } from 'nookies'
 
 function useLogout(setAdminIndex: Dispatch<SetStateAction<number | null>>, setTeacherID: Dispatch<SetStateAction<string | null>>) {
     async function logoutAdmin() {
         setAdminIndex(null)
     
-        nookies.destroy(undefined, process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_ADMIN)
+        destroyCookie(undefined, process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_ADMIN)
     }
 
     async function logoutTeacher() {
         setTeacherID(null)
     
-        nookies.destroy(undefined, process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_TEACHER)
+        destroyCookie(undefined, process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_TEACHER)
     }
 
     return {
