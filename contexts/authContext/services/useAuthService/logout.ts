@@ -5,7 +5,7 @@ async function logout(setValue: Dispatch<SetStateAction<any>>, item: string) {
     setValue(null)
 
     destroyCookie(undefined, item, {
-        path: '/'
+        domain: process.env.NEXT_PUBLIC_DOMAIN
     })
 }
 

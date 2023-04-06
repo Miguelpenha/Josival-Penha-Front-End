@@ -14,7 +14,7 @@ function useLogout() {
             await logoutTeacher()
         }
         
-        // await router.replace('/')
+        await router.replace('/')
     }
 
     return logout
