@@ -11,7 +11,6 @@ async function login(body: IRequest, url: string, setValue: Dispatch<SetStateAct
         setValue(id)
 
         setCookie(undefined, item, String(id), {
-            path: '/',
             secure: true,
             domain: process.env.NEXT_PUBLIC_DOMAIN,
             maxAge: 52560000 * 60 * 1 // 100 year
