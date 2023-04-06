@@ -1,4 +1,4 @@
-import { parseCookies } from 'nookies'
+import useAuth from '../contexts/authContext'
 import api from '../services/api'
 
 interface IResponse {
@@ -6,11 +6,15 @@ interface IResponse {
 }
 
 function useAdmin() {
-    const { [process.env.NEXT_PUBLIC_NAME_COOKIE_LOGIN_ADMIN]:adminIndex } = parseCookies()
+    const { adminIndex } = useAuth()
+    
+    if (adminIndex) {
+        const { data } = api.get<IResponse>(`/admin/${adminIndex}`)
 
-    const { data } = api.get<IResponse>(`/admin/${adminIndex}`)
-
-    return data?.login
+        return data?.login
+    } else {
+        return false
+    }
 }
 
 export default useAdmin
