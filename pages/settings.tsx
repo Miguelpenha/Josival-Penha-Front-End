@@ -27,7 +27,7 @@ function Settings() {
         <Head>
             <title>Configurações</title>
         </Head>
-        <ContainerDefault back={admin ? '/admin' : '/teacher'}>
+        <ContainerDefault back={admin ? '/admin' : '/teachers'}>
             <Title>Configurações</Title>
             {(admin || teacher) ? <>
                 <Field>
