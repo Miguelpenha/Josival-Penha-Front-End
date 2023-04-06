@@ -1,12 +1,11 @@
 import { Dispatch, SetStateAction } from 'react'
-import nookies from 'nookies'
+import { destroyCookie } from 'nookies'
 
 async function logout(setValue: Dispatch<SetStateAction<any>>, item: string) {
     setValue(null)
 
-    console.log('logout feito', item)
-
-    nookies.destroy(undefined, item)
+    destroyCookie(undefined, item)
+    destroyCookie(undefined, item)
 }
 
 export default logout
