@@ -8,9 +8,9 @@ function useLogout() {
     const router = useRouter()
 
     async function logout() {
-        type == 'admin' ? await logoutAdmin() : await logoutTeacher()
-
-        await router.replace('/')
+        (type == 'admin' ? logoutAdmin() : logoutTeacher()).then(async () => {
+            await router.replace('/')
+        })
     }
 
     return logout
