@@ -1,27 +1,19 @@
 import useAdmin from '../components/useAdmin'
 import useTeacher from '../components/useTeacher'
 import useLogout from '../components/useLogout'
-import { toast } from 'react-toastify'
 import Head from 'next/head'
 import ContainerDefault from '../components/ContainerDefault'
 import { Title, Field, Label, Data, ButtonLogout } from '../styles/pages/settings'
+import handleCopy from '../components/handleCopy'
 import Loading from '../components/Loading'
 import nookies from 'nookies'
+import useModal from '../components/useModal'
+import ModalLogout from '../components/ModalLogout'
 
 function Settings() {
     const admin = useAdmin()
     const teacher = useTeacher()
-    const logout = useLogout()
-
-    async function handleCopy(value: string | false | undefined) {
-        if (value) {
-            await window.navigator.clipboard.writeText(value)
-      
-            toast('Dado copiado', {
-              type: 'info'
-            })
-        }
-    }
+    const { open, Modal } = useModal()
     
     return <>
         <Head>
@@ -34,12 +26,15 @@ function Settings() {
                     <Label>Logado como </Label>
                     <Data onClick={async () => await handleCopy(admin || teacher)}>{admin || teacher}</Data>
                 </Field>
-                <ButtonLogout title="Logout" onClick={logout}>
+                <ButtonLogout title="Logout" onClick={open}>
                     <svg width="2.3em" height="2.3em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0z" fill="none"/>
                         <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
                     </svg>
                 </ButtonLogout>
+                <Modal>
+                    <ModalLogout close={close}/>
+                </Modal>
             </> : <Loading size={90} weight={8} speed={0.8}/>}
         </ContainerDefault>
     </>
