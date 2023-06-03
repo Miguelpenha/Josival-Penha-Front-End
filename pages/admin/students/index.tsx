@@ -3,14 +3,15 @@ import IStudent from '../../../types/student'
 import { useState } from 'react'
 import Head from 'next/head'
 import ContainerDefault from '../../../components/ContainerDefault'
-import { Title, ContainerStudents, Student, NameStudent } from '../../../styles/pages/admin/students'
+import { Title, ContainerStudents } from '../../../styles/pages/admin/students'
+import Student from '../../../components/Student'
 import InputSearch from '../../../components/InputSearch'
 import ButtonLink from '../../../components/ButtonLink'
 import Loading from '../../../components/Loading'
 import getServerSidePropsAuthAdmin from '../../../utils/getServerSidePropsAuthAdmin'
 
 function Students() {
-    const { data: students } = api.get<IStudent[]>('/students')
+    const { data: students, mutate } = api.get<IStudent[]>('/students')
     const [search, setSearch] = useState('')
 
     return <>
@@ -30,9 +31,7 @@ function Students() {
                 {students ? students.map((student, index) => {
                     if (student.name.toUpperCase().includes(search.toUpperCase())) {
                         return (
-                            <Student key={index} href={`students/edit/${student._id}`}>
-                                <NameStudent>{student.name}</NameStudent>
-                            </Student>
+                            <Student mutate={mutate as any} key={index} student={student}/>
                         )
                     }
                 }) : <Loading size={90} weight={8} speed={0.8}/>}
