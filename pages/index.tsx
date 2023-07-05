@@ -7,7 +7,7 @@ import nookies from 'nookies'
 function Home() {
     return <>
         <Head>
-            <title>Fazer login</title>
+            <title>Sistema Josival Penha</title>
         </Head>
         <ContainerDefault>
             <Title>Fazer login</Title>
