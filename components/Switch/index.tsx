@@ -16,7 +16,7 @@ const Switch: FC<IProps> = ({ label, ...props }) => {
                 {...props}
                 checkedIcon={false}
                 uncheckedIcon={false}
-                onColor={theme.primary}
+                onColor={theme.color}
                 offColor={theme.backgroundColor}
                 offHandleColor={theme.secondary}
                 onHandleColor={theme.backgroundColorSecondary}

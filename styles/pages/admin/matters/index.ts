@@ -23,7 +23,7 @@ export const Form = styled.form`
     align-self: center;
     border-radius: 10px;
     flex-direction: column;
-    background-color: ${props => props.theme.backgroundColorSecondary};
+    background-color: ${props => props.theme.primary};
 
     @media screen and (max-width: 900px) {
         width: 18rem;

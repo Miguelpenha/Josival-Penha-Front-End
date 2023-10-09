@@ -19,8 +19,8 @@ export const styleContainer = css<IStyleContainer>`
     transform: scale(0.95);
     transition-duration: 0.2s;
     transition-timing-function: linear;
+    background-color: ${props => props.theme.primary};
     border: 1px solid ${props => props.theme.backgroundColor};
-    background-color: ${props => props.theme.backgroundColorSecondary};
 
     ${props => props.loading && css`
         cursor: default;
@@ -32,12 +32,27 @@ export const styleContainer = css<IStyleContainer>`
             border: 1px solid ${props => props.theme.primary};
             background-color: ${props => props.theme.backgroundColor};
             box-shadow: ${props => props.theme.primary} 0px 3px 7px 0px;
+
+            svg {
+                fill: ${props => props.theme.primary};
+            }
+
+            span {
+                color: ${props => props.theme.primary};
+            }
         }
     `}
 
     svg {
         margin-left: 1%;
-        fill: ${props => props.theme.primary};
+        transition-duration: 0.2s;
+        transition-timing-function: linear;
+        fill: ${props => props.theme.secondaryColor};
+    }
+
+    span {
+        transition-duration: 0.2s;
+        transition-timing-function: linear;
     }
 `
 
@@ -49,7 +64,7 @@ export const styleText = css`
     margin: auto;
     font-size: 1.4rem;
     font-weight: bold;
-    color: ${props => props.theme.primary};
+    color: ${props => props.theme.secondaryColor};
 `
 
 export const Text = styled.span`

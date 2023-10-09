@@ -4,7 +4,6 @@ import Button from './Button'
 const ButtonSubmit = styled(Button)`
     margin: 0%;
     width: 14rem;
-    
     background-color: ${props => props.disabled ? props.theme.backgroundColorSecondary : props.theme.backgroundColor};
 
     ${props => !props.disabled && css`
@@ -12,6 +11,10 @@ const ButtonSubmit = styled(Button)`
             background-color: ${props => props.theme.backgroundColorSecondary};
         }
     `}
+
+    span {
+        color: ${props => props.theme.primary};
+    }
 `
 
 export default ButtonSubmit

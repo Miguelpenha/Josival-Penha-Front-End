@@ -10,14 +10,14 @@ export const Container = styled.form`
     border-radius: 10px;
     align-items: center;
     flex-direction: column;
-    background-color: ${props => props.theme.backgroundColorSecondary};
+    background-color: ${props => props.theme.primary};
 `
 
 export const Title = styled.h3`
     font-size: 2rem;
     text-align: center;
     margin-bottom: 2.5rem;
-    color: ${props => props.theme.primary};
+    color: ${props => props.theme.secondaryColor};
 `
 
 export const ButtonSubmit = styled(ButtonSubmitRaw)`

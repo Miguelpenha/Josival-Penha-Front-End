@@ -9,14 +9,22 @@ export const Container = styled.div`
     transform: scale(0.95);
     transition-duration: 0.2s;
     transition-timing-function: linear;
+    background-color: ${props => props.theme.primary};
     border: 1px solid ${props => props.theme.backgroundColor};
-    background-color: ${props => props.theme.backgroundColorSecondary};
 
     :hover {
         transform: scale(1);
         border: 1px solid ${props => props.theme.primary};
         background-color: ${props => props.theme.backgroundColor};
         box-shadow: ${props => props.theme.primary} 0px 3px 7px 0px;
+
+        span {
+            color: ${props => props.theme.primary};
+        }
+
+        svg {
+            fill: ${props => props.theme.primary};
+        }
     }
 
     @media screen and (max-width: 900px) {
@@ -26,7 +34,9 @@ export const Container = styled.div`
 
 export const Name = styled.span`
     font-size: 1.2rem;
-    color: ${props => props.theme.color};
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+    color: ${props => props.theme.secondaryColor};
 `
 
 export const Footer = styled.div`
@@ -61,5 +71,7 @@ export const ContainerOptionLink = styled(Link)`
 
 export const Option = styled.svg`
     width: 2.2em;
-    fill: ${props => props.theme.primary};
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+    fill: ${props => props.theme.secondaryColor};
 `

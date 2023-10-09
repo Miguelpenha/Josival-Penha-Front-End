@@ -11,4 +11,5 @@ export const Container = styled.div`
 export const Label = styled.label`
     font-weight: bold;
     margin-left: 1rem;
+    color: ${props => props.theme.secondaryColor};
 `

@@ -20,7 +20,7 @@ export const ContainerIcon = styled.button`
 export const Icon = styled.svg`
     align-self: center;
     justify-self: center;
-    fill: ${props => props.theme.primary};
+    fill: ${props => props.theme.secondaryColor};
 `
 
 export const InputStyled = styled.input`

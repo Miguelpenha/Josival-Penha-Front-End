@@ -22,7 +22,7 @@ export const Form = styled.form`
     border-radius: 10px;
     margin-bottom: 10rem;
     flex-direction: column;
-    background-color: ${props => props.theme.backgroundColorSecondary};
+    background-color: ${props => props.theme.primary};
 
     @media screen and (max-width: 900px) {
         width: 18rem;
@@ -40,6 +40,7 @@ export const Field = styled.div`
 export const Label = styled.label`
     font-size: 1rem;
     font-weight: bold;
+    color: ${props => props.theme.secondaryColor};
 `
 
 export const MessageError = styled.span`
