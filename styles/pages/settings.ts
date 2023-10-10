@@ -26,7 +26,7 @@ export const Label = styled.label`
     font-weight: bold;
     text-align: center;
     margin-bottom: 0.5em;
-    color: ${props => props.theme.secondary};
+    color: ${props => props.theme.primary};
 `
 
 export const Data = styled.span`
