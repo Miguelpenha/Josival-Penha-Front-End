@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import ContainerDefault from '../../components/ContainerDefault'
-import { Title } from '../../styles/pages/admin'
+import { Title, ButtonSpreadsheet } from '../../styles/pages/admin'
 import ButtonLink from '../../components/ButtonLink'
 import getServerSidePropsAuthAdmin from '../../utils/getServerSidePropsAuthAdmin'
 
@@ -23,11 +23,11 @@ function Admin() {
                     <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
                 </svg>
             </ButtonLink>
-            <ButtonLink href="admin/spreadsheets" title="Planilhas">
+            <ButtonSpreadsheet href="admin/spreadsheets" title="Planilhas">
                 <svg width="2.8em" height="2.8em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M19,11V9H11V5H9V9H5V11H9V19H11V11H19M19,3C19.5,3 20,3.2 20.39,3.61C20.8,4 21,4.5 21,5V19C21,19.5 20.8,20 20.39,20.39C20,20.8 19.5,21 19,21H5C4.5,21 4,20.8 3.61,20.39C3.2,20 3,19.5 3,19V5C3,4.5 3.2,4 3.61,3.61C4,3.2 4.5,3 5,3H19Z"/>
                 </svg>
-            </ButtonLink>
+            </ButtonSpreadsheet>
             <ButtonLink href="admin/dashboards" title="Dashboards">
                 <svg width="2.8em" height="2.8em" xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" viewBox="0 0 24 24">
                     <rect fill="none" height="24" width="24"/>

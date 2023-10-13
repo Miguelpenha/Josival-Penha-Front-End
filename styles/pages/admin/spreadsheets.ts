@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Button from '../../../components/Button'
 
 export const Title = styled.h1`
     width: 80%;
@@ -22,4 +23,26 @@ export const ContainerButtons = styled.div`
     align-self: center;
     flex-direction: row;
     justify-content: center;
+`
+
+export const ButtonSpreadsheet = styled(Button)`
+    background-color: #00ac47;
+
+    :hover {
+        border-color: #00ac47;
+        box-shadow: #00ac47 0px 3px 7px 0px;
+        background-color: ${props => props.theme.backgroundColor};
+
+        svg {
+            fill: #00ac47;
+        }
+
+        span {
+            color: #00ac47;
+        }
+    }
+
+    span {
+        border-top-color: #00ac47;
+    }
 `

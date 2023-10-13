@@ -51,4 +51,19 @@ export const Data = styled.span`
 
 export const ButtonLogout = styled(Button)`
     margin-top: 8em;
+    background-color: red;
+
+    :hover {
+        border-color: red;
+        box-shadow: red 0px 3px 7px 0px;
+        background-color: ${props => props.theme.backgroundColor};
+
+        svg {
+            fill: red;
+        }
+
+        span {
+            color: red;
+        }
+    }
 `

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import ButtonLink from '../../../components/ButtonLink'
 
 export const Title = styled.h1`
     width: 80%;
@@ -11,5 +12,23 @@ export const Title = styled.h1`
 
     @media screen and (max-width: 900px) {
         font-size: 8vw;
+    }
+`
+
+export const ButtonSpreadsheet = styled(ButtonLink)`
+    background-color: #00ac47;
+
+    :hover {
+        border-color: #00ac47;
+        box-shadow: #00ac47 0px 3px 7px 0px;
+        background-color: ${props => props.theme.backgroundColor};
+
+        svg {
+            fill: #00ac47;
+        }
+
+        span {
+            color: #00ac47;
+        }
     }
 `
