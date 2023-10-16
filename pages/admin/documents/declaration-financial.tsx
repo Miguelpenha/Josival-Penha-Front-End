@@ -20,7 +20,8 @@ interface IForm {
 
 function Documents() {
     const { data: students } = api.get<IStudent[]>('/students')
-    const { watch, setValue, register } = useForm<IForm>()
+    const monthDefault = new Date().toLocaleString('pt-br', { month: 'long'})
+    const { watch, setValue, register } = useForm<IForm>({ defaultValues: { month: monthDefault.charAt(0).toUpperCase() + monthDefault.slice(1) } })
     const { student, month } = watch()
     const router = useRouter()
 
