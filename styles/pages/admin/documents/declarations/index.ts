@@ -13,3 +13,13 @@ export const Title = styled.h1`
         font-size: 8vw;
     }
 `
+
+export const ContainerButtons = styled.div`
+    gap: 2.2vw;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 900px;
+    align-self: center;
+    flex-direction: row;
+    justify-content: center;
+`

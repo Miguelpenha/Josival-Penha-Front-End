@@ -1,17 +1,17 @@
-import api from '../../../services/api'
-import IStudent from '../../../types/student'
+import api from '../../../../services/api'
+import IStudent from '../../../../types/student'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/router'
-import generateDocument from '../../../components/generateDocument'
+import generateDocument from '../../../../components/generateDocument'
 import { toast } from 'react-toastify'
 import Head from 'next/head'
-import ContainerDefault from '../../../components/ContainerDefault'
-import { Title, Form, Field, Label } from '../../../styles/pages/admin/documents/declaration-financial'
-import Select from '../../../components/Select'
-import Input from '../../../components/Input'
-import ButtonSubmit from '../../../components/ButtonSubmit'
-import Loading from '../../../components/Loading'
-import getServerSidePropsAuthAdmin from '../../../utils/getServerSidePropsAuthAdmin'
+import ContainerDefault from '../../../../components/ContainerDefault'
+import { Title, Form, Field, Label } from '../../../../styles/pages/admin/documents/declarations/financial'
+import Select from '../../../../components/Select'
+import Input from '../../../../components/Input'
+import ButtonSubmit from '../../../../components/ButtonSubmit'
+import Loading from '../../../../components/Loading'
+import getServerSidePropsAuthAdmin from '../../../../utils/getServerSidePropsAuthAdmin'
 
 interface IForm {
     month: string
@@ -26,9 +26,9 @@ function Documents() {
     const router = useRouter()
 
     async function handleSubmit() {
-        await generateDocument(`/students/documents/declaration-finance/${student._id}?month=${month}`, `Declaração financeira do aluno(a) ${student.name}.pdf`)
+        await generateDocument(`/students/documents/declarations/financial/${student._id}?month=${month}`, `Declaração financeira do aluno(a) ${student.name}.pdf`)
         
-        await router.push('/admin/documents')
+        await router.push('/admin/documents/declarations')
 
         toast('Declaração gerada com sucesso!', {
             type: 'success'
@@ -39,7 +39,7 @@ function Documents() {
         <Head>
             <title>Gerar declaração</title>
         </Head>
-        <ContainerDefault back="/admin/documents">
+        <ContainerDefault back="/admin/documents/declarations">
             <Title>Gerar declaração</Title>
             <Form onSubmit={ev => ev.preventDefault()}>
                 {students ? <>
