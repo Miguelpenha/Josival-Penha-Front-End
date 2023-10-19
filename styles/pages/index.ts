@@ -18,5 +18,6 @@ export const ContainerButtons = styled.div`
     gap: 1.5em;
     display: flex;
     align-self: center;
+    margin-bottom: 2em;
     flex-direction: column;
 `
