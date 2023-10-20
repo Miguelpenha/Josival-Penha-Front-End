@@ -39,7 +39,7 @@ function Notice() {
             <title>Mandar aviso</title>
         </Head>
         <ContainerDefault back="/admin/notify/email">
-            <Title>Gerar declaração</Title>
+            <Title>Enviar aviso</Title>
             <Form onSubmit={ev => ev.preventDefault()}>
                 <Field>
                     <Label>E-mail do aluno</Label>
