@@ -6,7 +6,8 @@ interface IProps {
     name: string
     required?: boolean
     placeholder?: string
-    defaultValue?: string
+    defaultValue?: { label: string, value: string }
+    value?: any
     onChange?: (value: any) => void
     options: OptionsOrGroups<object, GroupBase<object>> | undefined
 }
@@ -22,7 +23,7 @@ const Select: FC<IProps> = ({ name, options, onChange, defaultValue, placeholder
             styles={styles}
             options={options || []}
             onChange={onChange as any}
-            defaultInputValue={defaultValue as any}
+            defaultValue={defaultValue as any}
             noOptionsMessage={() => <span>Sem opções</span>}
             placeholder={placeholder || 'Escolha uma opção...'}
         />
