@@ -1,6 +1,7 @@
 import { Action } from 'kbar'
 import { useRouter } from 'next/router'
 import useActionsNotify from './useActionsNotify'
+import useActionsIncomes from './useActionsIncomes'
 import useActionsStudents from './useActionsStudents'
 import useActionsDocuments from './useActionsDocuments'
 import useActionsDashboards from './useActionsDashboards'
@@ -8,6 +9,7 @@ import useActionsDashboards from './useActionsDashboards'
 function useActionsAdmin(): Action[] {
     const router = useRouter()
     const actionsNotify = useActionsNotify(router)
+    const actionsIncomes = useActionsIncomes(router)
     const actionsStudents = useActionsStudents(router)
     const actionsDocuments = useActionsDocuments(router)
     const actionsDashboards = useActionsDashboards(router)
@@ -38,6 +40,7 @@ function useActionsAdmin(): Action[] {
                 </svg>
             )
         },
+        ...actionsIncomes,
         ...actionsDocuments,
         ...actionsDashboards,
         ...actionsNotify,
