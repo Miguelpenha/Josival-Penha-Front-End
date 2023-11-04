@@ -48,7 +48,8 @@ function useStyles(): StylesConfig<object, false, GroupBase<object>> {
         option: (base, props) => ({
             ...base,
             cursor: 'pointer',
-            backgroundColor: props.isSelected ? theme.secondaryColor : theme.backgroundColor,
+            color: props.isSelected ? theme.primary : theme.color,
+            backgroundColor: props.isSelected ? theme.backgroundColorSecondary : theme.backgroundColor,
             ':active': {
                 backgroundColor: theme.secondary
             }

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Container = styled.div`
     width: 100%;
@@ -23,7 +23,7 @@ export const Icon = styled.svg`
     fill: ${props => props.theme.secondaryColor};
 `
 
-export const InputStyled = styled.input`
+export const styleInput = css`
     width: 100%;
     border: none;
     padding: 0.8rem;
@@ -50,4 +50,8 @@ export const InputStyled = styled.input`
             ` 
         )}
     }
+`
+
+export const InputStyled = styled.input`
+    ${styleInput}
 `
