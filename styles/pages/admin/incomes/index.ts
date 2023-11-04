@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import Link from 'next/link'
 
 export const Title = styled.h1`
     width: 80%;
@@ -34,12 +35,20 @@ export const ContainerIncomes = styled.div`
 `
 
 export const Income = styled.div`
-    gap: 3em;
     display: flex;
     padding: 0.5em;
+    max-width: 100%;
     border-radius: 10px;
-    justify-content: flex-start;
+    flex-direction: column;
     background-color: ${props => props.theme.color};
+`
+
+export const Fields = styled.div`
+    gap: 3em;
+    width: 100%;
+    display: flex;
+    max-width: 100%;
+    justify-content: flex-start;
 
     @media screen and (max-width: 750px) {
         gap: 0.5em;
@@ -53,8 +62,11 @@ interface IIncomeField  {
 
 export const IncomeField = styled.span<IIncomeField>`
     margin: 1em 0;
+    overflow: hidden;
     align-self: center;
     text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     width: ${props => props.width || 7}em;
     color: ${props => props.theme.secondaryColor};
 
@@ -69,4 +81,47 @@ export const IncomeField = styled.span<IIncomeField>`
     @media screen and (max-width: 350px) {
         font-size: 0.8em;
     }
+`
+
+export const Options = styled.div`
+    gap: 3em;
+    width: 100%;
+    display: flex;
+    max-width: 100%;
+    justify-content: flex-start;
+
+    @media screen and (max-width: 750px) {
+        gap: 0.5em;
+    }
+`
+
+export const styleOption = css`
+    border: none;
+    display: flex;
+    padding: 0.5em;
+    cursor: pointer;
+    align-self: center;
+    border-radius: 50%;
+    transform: scale(0.95);
+    transition-duration: 0.2s;
+    background-color: transparent;
+    transition-timing-function: linear;
+
+    :hover {
+        transform: scale(1);
+        background-color: ${props => props.theme.primary};
+    }
+    
+    svg {
+        width: 2.2em;
+        fill: ${props => props.theme.secondaryColor};
+    }
+`
+
+export const OptionLink = styled(Link)`
+    ${styleOption}
+`
+
+export const OptionButton = styled.button`
+    ${styleOption}
 `

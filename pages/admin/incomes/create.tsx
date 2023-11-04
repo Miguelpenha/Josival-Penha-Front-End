@@ -8,13 +8,12 @@ import Select from '../../../components/Select'
 import Input from '../../../components/Input'
 import ButtonSubmit from '../../../components/ButtonSubmit'
 import getServerSidePropsAuthAdmin from '../../../utils/getServerSidePropsAuthAdmin'
-import { useEffect } from 'react'
 import { toast } from 'react-toastify'
-import InputMask from 'react-input-mask'
-import IClass from '../../../types/class'
 import base from '../../../services/api/base'
 import { useRouter } from 'next/router'
 import IIncome from '../../../types/income'
+import categories from '../../../utils/categoriesIncome'
+import methods from '../../../utils/methodsIncome'
 
 type IIncomeForForm = Omit<IIncome, '_id' | 'created' | 'student' | 'valueRaw'>
 
@@ -22,61 +21,7 @@ interface IForm extends IIncomeForForm {
     student: string
 }
 
-const methods = [
-    {
-        label: 'Pix',
-        value: 'Pix'
-    },
-    {
-        label: 'Crédito',
-        value: 'Crédito'
-    },
-    {
-        label: 'Débito',
-        value: 'Débito'
-    },
-    {
-        label: 'Físico',
-        value: 'Físico'
-    },
-    {
-        label: 'Transação bancaria',
-        value: 'Transação bancaria'
-    },
-    {
-        label: 'Boleto',
-        value: 'Boleto'
-    }
-]
-
-const categories = [
-    {
-        label: 'Mensalidade',
-        value: 'Mensalidade'
-    },
-    {
-        label: 'Fardamento',
-        value: 'Fardamento'
-    },
-    {
-        label: 'Matrícula',
-        value: 'Matrícula'
-    },
-    {
-        label: 'Eventos',
-        value: 'Eventos'
-    },
-    {
-        label: 'Livros',
-        value: 'Livros'
-    },
-    {
-        label: 'Outros',
-        value: 'Outros'
-    }
-]
-
-function CreateStudent() {
+function CreateIncome() {
     const router = useRouter()
     const { data: students } = api.get<IStudent[]>('/students')
     const { register, handleSubmit, setValue } = useForm<IForm>()
@@ -178,6 +123,6 @@ function CreateStudent() {
     </>
 }
 
-export default CreateStudent
+export default CreateIncome
 
 export const getServerSideProps = getServerSidePropsAuthAdmin
