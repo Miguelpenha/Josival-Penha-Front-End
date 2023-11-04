@@ -186,8 +186,8 @@ function CreateStudent() {
                     <Label>Situação do aluno</Label>
                     <Select
                         name="situation"
-                        defaultValue="Ativo"
                         placeholder="Situação do aluno..."
+                        defaultValue={{ label: 'Ativo',value: 'Ativo' }}
                         onChange={situation => setValue('situation', situation.value)}
                         options={[
                             {
