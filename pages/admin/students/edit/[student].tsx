@@ -150,7 +150,7 @@ function EditStudent() {
                         <Select
                             name="gender"
                             placeholder="Gênero do aluno..."
-                            defaultValue={student && student.gender}
+                            defaultValue={student && { label: student.gender, value: student.gender }}
                             onChange={gender => setValue('gender', gender.value)}
                             options={[
                                 {
