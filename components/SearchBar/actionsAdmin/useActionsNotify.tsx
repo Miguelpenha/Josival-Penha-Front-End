@@ -93,11 +93,11 @@ function useActionsNotify(router: NextRouter): Action[] {
             )
         },
         {
-            name: 'Aviso',
             parent: 'emailNotify',
-            id: 'noticeEmailNotify',
-            perform: () => router.push('/admin/notify/email/notice'),
-            keywords: 'notice aviso email e-mail notificar notificação notify',
+            id: 'noticeEmailNotifyPayment',
+            name: 'Aviso De Pagamento',
+            perform: () => router.push('/admin/notify/email/notice-payment'),
+            keywords: 'notice payment aviso de pagamento email e-mail notificar notificação notify',
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M0 0h24v24H0V0z" fill="none"/>
