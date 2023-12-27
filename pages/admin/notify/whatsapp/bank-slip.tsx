@@ -27,11 +27,11 @@ function BankSlip() {
         const telephoneIsDDD = student.replace(/-/g, ' ').replace(/\(/g, '').replace(/\)/g, '').replace(/\s+/g, '').replace(/\+/g, '')
         const { link } = (await base.post<{ link: string }>(`/notify/whatsapp/${telephoneIsDDD.includes('55') ? telephoneIsDDD : `55${telephoneIsDDD}`}`, { month })).data
 
-        await navigator.clipboard.writeText(link)
+        window.open(link, '_blank')
 
         router.push('/admin/notify')
 
-        toast('Link do Whatsapp copiado para a área de transferência!', {
+        toast('Link do Whatsapp aberto em uma nova aba!', {
            type: 'success' 
         })
     }
