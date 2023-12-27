@@ -55,11 +55,11 @@ function useActionsNotify(router: NextRouter): Action[] {
             )
         },
         {
-            name: 'Boletim',
+            name: 'Boleto',
             parent: 'whatsappNotify',
-            id: 'reportCardWhatsappNotify',
-            perform: () => router.push('/admin/notify/whatsapp/report-card'),
-            keywords: 'report card report-card boletim whatsapp notificar notificação notify',
+            id: 'BankSlipWhatsappNotify',
+            perform: () => router.push('/admin/notify/whatsapp/bank-slip'),
+            keywords: 'bank slip bank-slip boleto whatsapp notificar notificação notify',
             icon: (
                 <svg width="2.3em" height="2.3em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M0 0h24v24H0z" fill="none"/>

@@ -6,7 +6,7 @@ import base from '../../../../services/api/base'
 import { toast } from 'react-toastify'
 import Head from 'next/head'
 import ContainerDefault from '../../../../components/ContainerDefault'
-import { Title, Form, ButtonSubmit } from '../../../../styles/pages/admin/notify/whatsapp/report-card'
+import { Title, Form, ButtonSubmit } from '../../../../styles/pages/admin/notify/whatsapp/bank-slip'
 import Select from '../../../../components/Select'
 import Loading from '../../../../components/Loading'
 import getServerSidePropsAuthAdmin from '../../../../utils/getServerSidePropsAuthAdmin'
@@ -17,7 +17,7 @@ interface IForm {
     student: string
 }
 
-function ReportCard() {
+function BankSlip() {
     const { watch, setValue, register } = useForm<IForm>()
     const { student, month } = watch()
     const router = useRouter()
@@ -38,10 +38,10 @@ function ReportCard() {
 
     return <>
         <Head>
-            <title>Notificar boletim</title>
+            <title>Notificar boleto</title>
         </Head>
         <ContainerDefault back="/admin/notify/whatsapp">
-            <Title>Notificar boletim</Title>
+            <Title>Notificar boleto</Title>
             <Form onSubmit={ev => ev.preventDefault()}>
                 {students ? <>
                     <Select
@@ -69,6 +69,6 @@ function ReportCard() {
     </>
 }
 
-export default ReportCard
+export default BankSlip
 
 export const getServerSideProps = getServerSidePropsAuthAdmin
