@@ -5,7 +5,7 @@ import generateSpreadsheet from '../../components/generateSpreadsheet'
 import getServerSidePropsAuthAdmin from '../../utils/getServerSidePropsAuthAdmin'
 
 function Spreadsheets() {
-    const filtersGeneralSpreadsheet = ['Alunos', 'Turmas', 'Professoras', 'Financeiro']
+    const filtersGeneralSpreadsheet = ['Alunos', 'Turmas', 'Professoras', 'Receitas']
 
     return <>
         <Head>
@@ -31,7 +31,7 @@ function Spreadsheets() {
                         <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3 1 9l11 6 9-4.91V17h2V9L12 3z"/>
                     </svg>
                 </ButtonSpreadsheet>
-                <ButtonSpreadsheet loading onClick={() => generateSpreadsheet('Financeiro', 'Planilha de financeiro.xlsx')} title="Financeiro">
+                <ButtonSpreadsheet loading onClick={() => generateSpreadsheet('Receitas', 'Planilha de receitas.xlsx')} title="Receitas">
                     <svg width="2.8em" height="2.8em" xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" viewBox="0 0 24 24">
                         <g>
                             <rect fill="none" height="24" width="24"/>
