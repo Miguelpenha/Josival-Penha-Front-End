@@ -67,8 +67,8 @@ function useActionsDocuments(router: NextRouter): Action[] {
         },
         {
             parent: 'declarations',
-            name: 'Declaração financeira',
             id: 'declarationFinancial',
+            name: 'Declaração financeira',
             perform: () => router.push('/admin/documents/declarations/financial'),
             keywords: 'declaração declaration documentos documento documents document declaration financial declaração financeira',
             icon: (
@@ -83,7 +83,7 @@ function useActionsDocuments(router: NextRouter): Action[] {
             id: 'declarationProvisionalTransfer',
             name: 'Declaração provisória de transferência',
             perform: () => router.push('/admin/documents/declarations/provisional-transfer'),
-            keywords: 'declaração declaration documentos documento documents document declaration provisória de transferência provisional transfer',
+            keywords: 'transferência declaração declaration documentos documento documents document declaration provisória de transferência provisional transfer',
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M0 0h24v24H0z" fill="none"/>
