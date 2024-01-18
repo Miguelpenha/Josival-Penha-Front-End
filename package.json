@@ -30,9 +30,9 @@
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/next": "^9.0.0",
-    "@types/node": "^18.19.6",
+    "@types/node": "^18.19.8",
     "@types/nookies": "^2.0.3",
-    "@types/react": "^18.2.47",
+    "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
     "@types/react-input-mask": "^3.0.5",
     "@types/react-select": "^5.0.1",
