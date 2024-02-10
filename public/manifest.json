@@ -2,11 +2,11 @@
     "scope": "/",
     "start_url": "/",
     "display": "standalone",
-    "name": "Remember Bills",
-    "theme_color": "#851ed0",
-    "short_name": "Remember Bills",
-    "description": "Remember Bills",
-    "background_color": "#0C1015",
+    "theme_color": "#00afef",
+    "background_color": "#ffffff",
+    "name": "Sistema Josival Penha",
+    "short_name": "Sistema Josival Penha",
+    "description": "Sistema Josival Penha",
     "icons": [
       {
         "sizes": "57x57",
