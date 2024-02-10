@@ -37,6 +37,7 @@ export default class MyDocument extends Document {
                     {/* Favicon */}
                     <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon"/>
                     {/* General */}
+                    <link rel="manifest" href="/manifest.json"/>
                     <meta property="og:title" content="Sistema Josival Penha"/>
                     <meta name="description" content="Sistema do Josival Penha"/>
                     <meta name="twitter:card" content="summary_large_image"/>
