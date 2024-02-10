@@ -1,0 +1,22 @@
+{
+    "scope": "/",
+    "start_url": "/",
+    "display": "standalone",
+    "name": "Remember Bills",
+    "theme_color": "#851ed0",
+    "short_name": "Remember Bills",
+    "description": "Remember Bills",
+    "background_color": "#0C1015",
+    "icons": [
+      {
+        "sizes": "57x57",
+        "type": "image/png",
+        "src": "/img/apple-touch-icon.png"
+      },
+      {
+        "sizes": "512x512",
+        "type": "image/png",
+        "src": "/img/favicon-mobile.png"
+      }
+    ]
+  }
